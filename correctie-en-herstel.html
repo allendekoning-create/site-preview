@@ -77,6 +77,11 @@
   .related-grid a:hover{border-color:var(--gold);}
   .hero-media{border:1px solid var(--line); overflow:hidden; margin-bottom:44px;}
   .hero-media img{width:100%; display:block; aspect-ratio:4/3; object-fit:cover;}
+  .consult-pair{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;}
+  .consult-pair figure{margin:0; border:1px solid var(--line); overflow:hidden;}
+  .consult-pair img{width:100%; display:block; aspect-ratio:4/3; object-fit:cover;}
+  .consult-caption{font-family:var(--label); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone-dim); text-align:center; margin-bottom:44px;}
+  @media (max-width:640px){ .consult-pair{grid-template-columns:1fr;} }
   footer{border-top:1px solid var(--line); padding:40px 6vw; text-align:center; color:var(--stone-dim); font-size:12px; font-family:var(--label); letter-spacing:0.06em;}
   footer a{color:var(--stone-dim); margin:0 8px; text-decoration:none;}
 </style>
@@ -98,7 +103,11 @@
   <h1>Niet tevreden over eerdere pigmentatie? Er is bijna altijd een weg terug.</h1>
   <p class="meta">Laatst bijgewerkt: 29 augustus 2026 · Door Allen de Koning, MHP Specialist</p>
 
-  <div class="hero-media"><img src="images/laser-machine.png" alt="Picosecond-laserapparatuur voor het verwijderen van eerder aangebracht pigment" loading="lazy"></div>
+  <div class="consult-pair">
+    <figure><img src="images/consult-smp.png" alt="Consult over correctie van eerdere scalp micropigmentatie" loading="lazy"></figure>
+    <figure><img src="images/consult-pmu.png" alt="Consult over correctie van eerdere permanente make-up" loading="lazy"></figure>
+  </div>
+  <p class="consult-caption">Elk traject begint met een persoonlijk consult — voor hoofdhuid én wenkbrauwen</p>
 
   <p>Een te harde haarlijn. Wenkbrauwen die na een paar jaar oranje of grijsblauw zijn geworden. Pigmentpuntjes die te groot, te donker of te blauw zijn uitgevallen. Het komt vaker voor dan mensen denken — en het is bijna altijd een oplosbaar probleem.</p>
 
