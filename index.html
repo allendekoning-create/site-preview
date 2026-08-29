@@ -323,7 +323,8 @@
 
   /* ---------- LOCATION ---------- */
   .loc-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
-  .loc-detail{display:flex; flex-direction:column; gap:26px; margin-top:30px;}
+  .loc-detail{display:flex; flex-wrap:wrap; gap:32px; margin-top:40px;}
+  .loc-detail > div{flex:1 1 160px;}
   .loc-detail div h4{font-family:var(--label); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:6px;}
   .loc-detail div p{color:var(--cream); font-size:15px;}
   .contact-form-card{
@@ -668,11 +669,6 @@
     <div>
       <p class="eyebrow">Contact</p>
       <h2 class="section-title">Medisch Centrum<br>De Voorste Stroom</h2>
-      <div class="loc-detail">
-        <div><h4>Adres</h4><p>Moergestelseweg 22–26<br>5062 JW, Oisterwijk</p></div>
-        <div><h4>Openingstijden</h4><p>Alleen op afspraak</p></div>
-        <div><h4>Contact</h4><p>06 21 54 10 38<br>info@mhpcentrum.nl</p></div>
-      </div>
       <div class="contact-form-card">
         <h3>Stuur ons een bericht</h3>
         <p class="form-sub">Liever direct schrijven dan bellen? Vul het formulier in en we reageren zo snel mogelijk.</p>
@@ -687,6 +683,11 @@
           <button class="submit-btn" type="submit">Verstuur bericht</button>
           <p id="contactFormStatus" style="margin-top:14px; font-size:13px; color:var(--stone);"></p>
         </form>
+      </div>
+      <div class="loc-detail">
+        <div><h4>Adres</h4><p>Moergestelseweg 22–26<br>5062 JW, Oisterwijk</p></div>
+        <div><h4>Openingstijden</h4><p>Alleen op afspraak</p></div>
+        <div><h4>Contact</h4><p>06 21 54 10 38<br>info@mhpcentrum.nl</p></div>
       </div>
     </div>
     <div>
