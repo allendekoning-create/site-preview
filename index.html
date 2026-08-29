@@ -268,6 +268,40 @@
 
   /* ---------- PROCESS ---------- */
   .process-list{margin-top:60px; display:flex; flex-direction:column;}
+  .process-figure{
+    margin:54px 0 10px; padding:38px 34px 30px;
+    border:1px solid var(--line); background:rgba(201,165,92,0.035); position:relative;
+  }
+  .process-figure:before, .process-figure:after{
+    content:''; position:absolute; width:14px; height:14px; border:1px solid rgba(201,165,92,0.45);
+  }
+  .process-figure:before{top:10px; left:10px; border-right:none; border-bottom:none;}
+  .process-figure:after{bottom:10px; right:10px; border-left:none; border-top:none;}
+  .pf-title{text-align:center; font-family:var(--serif); font-weight:500; font-size:clamp(20px,2.6vw,28px); color:var(--cream); margin-bottom:6px;}
+  .pf-title em{font-style:normal; color:var(--gold);}
+  .pf-sub{text-align:center; font-family:var(--label); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--stone-dim); margin-bottom:34px;}
+  .pf-grid{display:grid; grid-template-columns:repeat(3,1fr);}
+  .pf-step{padding:0 22px; text-align:center;}
+  .pf-step + .pf-step{border-left:1px solid rgba(201,165,92,0.18);}
+  .pf-num{font-family:var(--serif); font-style:italic; font-size:26px; color:var(--gold); display:block; margin-bottom:14px;}
+  .pf-step img{width:100%; max-width:230px; height:auto; display:block; margin:0 auto 18px; mix-blend-mode:screen;}
+  .pf-step h4{font-family:var(--serif); font-weight:500; font-size:17px; color:var(--cream); margin-bottom:7px;}
+  .pf-step p{font-size:13.5px; color:var(--stone); line-height:1.6;}
+  .pf-badge{
+    display:inline-block; margin-top:12px; padding:5px 14px; border:1px solid rgba(201,165,92,0.4);
+    border-radius:20px; font-family:var(--label); font-size:10.5px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--gold-bright); background:rgba(201,165,92,0.1);
+  }
+  .pf-foot{
+    text-align:center; margin-top:32px; padding-top:22px; border-top:1px solid rgba(201,165,92,0.18);
+    font-family:var(--serif); font-style:italic; font-size:15.5px; color:var(--stone);
+  }
+  @media (max-width:760px){
+    .process-figure{padding:30px 20px 24px;}
+    .pf-grid{grid-template-columns:1fr; gap:34px;}
+    .pf-step + .pf-step{border-left:none; border-top:1px solid rgba(201,165,92,0.18); padding-top:30px;}
+    .pf-step img{max-width:180px;}
+  }
   .process-row{
     display:grid; grid-template-columns:90px 1fr 1fr; gap:30px; padding:38px 0; border-top:1px solid var(--line);
     align-items:start;
@@ -600,8 +634,35 @@
 <section id="proces" style="background:rgba(23,20,15,0.74);">
   <div class="wrap">
     <p class="eyebrow">Het proces</p>
-    <h2 class="section-title">Drie sessies naar<br>een natuurlijk resultaat.</h2>
-    <p class="lede">Dichtheid wordt opgebouwd, niet geforceerd — elke sessie voegt laag, definitie en nuance toe.</p>
+    <h2 class="section-title">Drie stappen naar<br>een natuurlijk resultaat.</h2>
+    <p class="lede">Dichtheid wordt opgebouwd, niet geforceerd. De pigmentatie zelf verloopt over meerdere sessies — elke sessie voegt laag, definitie en nuance toe.</p>
+
+    <div class="process-figure">
+      <p class="pf-title">Van ontwerp naar <em>volledige dichtheid</em></p>
+      <p class="pf-sub">Het traject in drie stappen</p>
+      <div class="pf-grid">
+        <div class="pf-step">
+          <span class="pf-num">I</span>
+          <img src="images/proces-1.png" alt="Studie van een haarlijnontwerp met meetlijnen" loading="lazy">
+          <h4>Consult &amp; intake</h4>
+          <p>Beoordeling van haarverlies en huid, intakeformulier, en een haarlijn ontworpen op uw gezichtsvorm.</p>
+        </div>
+        <div class="pf-step">
+          <span class="pf-num">II</span>
+          <img src="images/proces-2.png" alt="Studie van een hoofdhuid met gedeeltelijk aangebracht pigment" loading="lazy">
+          <h4>Pigmentatie in lagen</h4>
+          <p>Dichtheid wordt laag voor laag opgebouwd, nooit in één keer geforceerd.</p>
+          <span class="pf-badge">2–3 sessies</span>
+        </div>
+        <div class="pf-step">
+          <span class="pf-num">III</span>
+          <img src="images/proces-3.png" alt="Studie van een hoofdhuid met volledige, gelijkmatige pigmentdichtheid" loading="lazy">
+          <h4>Nazorg &amp; onderhoud</h4>
+          <p>Nazorginstructies en, indien gewenst, een periodieke touch-up voor kleur en scherpte.</p>
+        </div>
+      </div>
+      <p class="pf-foot">Dichtheid wordt opgebouwd, niet geforceerd.</p>
+    </div>
 
     <div class="process-list">
       <div class="process-row" data-reveal>
@@ -612,7 +673,7 @@
       <div class="process-row" data-reveal>
         <span class="process-index">II</span>
         <h3>Pigmentatie in lagen</h3>
-        <p>Met gespecialiseerde micro-naalden brengen we pigment aan over meerdere sessies. Zo ontstaat een realistische 3D-illusie die naadloos overloopt in bestaande haargroei.</p>
+        <p>Met gespecialiseerde micro-naalden brengen we pigment aan, verspreid over gemiddeld 2 tot 3 sessies met enkele weken ertussen. Zo ontstaat een realistische 3D-illusie die naadloos overloopt in bestaande haargroei.</p>
       </div>
       <div class="process-row" data-reveal>
         <span class="process-index">III</span>
