@@ -437,7 +437,7 @@
       <h1>Precisie in elke <em>follikel.</em><br>Zelfvertrouwen in elk resultaat.</h1>
       <p class="lede">MHP Centrum is gespecialiseerd in scalp micropigmentatie, hairstroke wenkbrauwen en littekencamouflage na haartransplantatie. Elke behandeling wordt met medische precisie en artistiek oog op maat gemaakt.</p>
       <div class="hero-ctas">
-        <a href="#model" class="btn-primary">Plan een persoonlijk consult</a>
+        <a href="#locatie" class="btn-primary">Plan een persoonlijk consult</a>
         <a href="#behandelingen" class="btn-ghost">Bekijk behandelingen</a>
       </div>
     </div>
@@ -569,7 +569,7 @@
     </div>
     <div class="chart-note">
       <p>Herkent u zichzelf ergens tussen stadium 3 en 7? Micro Haarpigmentatie biedt ook bij vergevorderde haaruitval een natuurlijk ogende, onderhoudsarme oplossing.</p>
-      <a href="#model" class="btn-ghost">Bespreek uw situatie</a>
+      <a href="#locatie" class="btn-ghost">Bespreek uw situatie</a>
     </div>
   </div>
 </section>
@@ -667,6 +667,17 @@
         <div><h4>Openingstijden</h4><p>Alleen op afspraak</p></div>
         <div><h4>Contact</h4><p>06 21 54 10 38<br>info@mhpcentrum.nl</p></div>
       </div>
+      <form id="contactForm" style="margin-top:40px;">
+        <input type="hidden" name="access_key" value="ab093397-b91c-40d7-b4a0-8097e1ec8680">
+        <input type="hidden" name="subject" value="Nieuw contactverzoek via mhpcentrum.nl">
+        <input type="hidden" name="from_name" value="MHP Centrum website">
+        <div class="form-field"><label>Naam</label><input type="text" name="name" required></div>
+        <div class="form-field"><label>E-mail</label><input type="email" name="email" required></div>
+        <div class="form-field"><label>Telefoon</label><input type="tel" name="phone"></div>
+        <div class="form-field"><label>Bericht</label><textarea name="message" required></textarea></div>
+        <button class="submit-btn" type="submit">Verstuur bericht</button>
+        <p id="contactFormStatus" style="margin-top:14px; font-size:13px; color:var(--stone);"></p>
+      </form>
     </div>
     <div>
       <div style="aspect-ratio:3/2; border:1px solid var(--line); overflow:hidden; margin-bottom:16px;">
@@ -979,19 +990,20 @@ revealRange.addEventListener('input', e=>{
   handle.style.left = v+'%';
 });
 
-// ---- model worden form submission (Web3Forms) ----
-const modelForm = document.getElementById('modelForm');
-if(modelForm){
-  modelForm.addEventListener('submit', async (e)=>{
+// ---- form submission (Web3Forms) ----
+function wireForm(formId, statusId){
+  const form = document.getElementById(formId);
+  if(!form) return;
+  const status = document.getElementById(statusId);
+  form.addEventListener('submit', async (e)=>{
     e.preventDefault();
-    const btn = modelForm.querySelector('.submit-btn');
-    const status = document.getElementById('formStatus');
+    const btn = form.querySelector('.submit-btn');
     const originalText = btn.textContent;
     btn.textContent = 'Bezig met verzenden...';
     btn.disabled = true;
     status.textContent = '';
     try{
-      const formData = new FormData(modelForm);
+      const formData = new FormData(form);
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
@@ -1000,8 +1012,8 @@ if(modelForm){
       const result = await res.json();
       if(result.success){
         btn.textContent = 'Verzonden ✓';
-        status.textContent = 'Bedankt voor uw aanvraag. We nemen zo snel mogelijk contact met u op.';
-        modelForm.reset();
+        status.textContent = 'Bedankt voor uw bericht. We nemen zo snel mogelijk contact met u op.';
+        form.reset();
       } else {
         btn.textContent = originalText;
         btn.disabled = false;
@@ -1014,6 +1026,8 @@ if(modelForm){
     }
   });
 }
+wireForm('modelForm', 'formStatus');
+wireForm('contactForm', 'contactFormStatus');
 
 // ---- tabs ----
 const tabBtns = document.querySelectorAll('.tab-btn');
