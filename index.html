@@ -267,7 +267,8 @@
   @media (max-width:760px){ .tab-panel.active{grid-template-columns:1fr;} }
 
   /* ---------- PROCESS ---------- */
-  .process-list{margin-top:60px; display:flex; flex-direction:column;}
+  .proces-cta{margin-top:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
+  .proces-cta p{color:var(--stone); font-size:14.5px; max-width:520px;}
   .process-figure{
     margin:54px 0 10px; padding:38px 34px 30px;
     border:1px solid var(--line); background:rgba(201,165,92,0.035); position:relative;
@@ -302,15 +303,6 @@
     .pf-step + .pf-step{border-left:none; border-top:1px solid rgba(201,165,92,0.18); padding-top:30px;}
     .pf-step img{max-width:180px;}
   }
-  .process-row{
-    display:grid; grid-template-columns:90px 1fr 1fr; gap:30px; padding:38px 0; border-top:1px solid var(--line);
-    align-items:start;
-  }
-  .process-row:last-child{border-bottom:1px solid var(--line);}
-  .process-index{font-family:var(--serif); font-style:italic; font-size:34px; color:var(--gold);}
-  .process-row h3{font-size:20px; margin-bottom:10px;}
-  .process-row p{color:var(--stone); font-size:14.5px;}
-  @media (max-width:760px){ .process-row{grid-template-columns:50px 1fr; } .process-row p{grid-column:2/3;} }
 
   /* ---------- HAARVERLIES / NORWOOD ---------- */
   .chart-card{
@@ -645,41 +637,28 @@
           <span class="pf-num">I</span>
           <img src="images/proces-1.png" alt="Studie van een haarlijnontwerp met meetlijnen" loading="lazy">
           <h4>Consult &amp; intake</h4>
-          <p>Beoordeling van haarverlies en huid, intakeformulier, en een haarlijn ontworpen op uw gezichtsvorm.</p>
+          <p>Beoordeling van haarverlies, huid en wensen. U vult een intake- en toestemmingsformulier in, en we ontwerpen een haarlijn die past bij uw gezichtsvorm en leeftijd.</p>
         </div>
         <div class="pf-step">
           <span class="pf-num">II</span>
           <img src="images/proces-2.png" alt="Studie van een hoofdhuid met gedeeltelijk aangebracht pigment" loading="lazy">
           <h4>Pigmentatie in lagen</h4>
-          <p>Dichtheid wordt laag voor laag opgebouwd, nooit in één keer geforceerd.</p>
+          <p>Met micro-naalden bouwen we dichtheid laag voor laag op, met enkele weken tussen de sessies — nooit in één keer geforceerd.</p>
           <span class="pf-badge">2–3 sessies</span>
         </div>
         <div class="pf-step">
           <span class="pf-num">III</span>
           <img src="images/proces-3.png" alt="Studie van een hoofdhuid met volledige, gelijkmatige pigmentdichtheid" loading="lazy">
           <h4>Nazorg &amp; onderhoud</h4>
-          <p>Nazorginstructies en, indien gewenst, een periodieke touch-up voor kleur en scherpte.</p>
+          <p>Uitgebreide nazorginstructies. Afhankelijk van huidtype en levensstijl houdt een periodieke touch-up het resultaat langdurig fris.</p>
         </div>
       </div>
       <p class="pf-foot">Dichtheid wordt opgebouwd, niet geforceerd.</p>
     </div>
 
-    <div class="process-list">
-      <div class="process-row" data-reveal>
-        <span class="process-index">I</span>
-        <h3>Consult, intake & haarlijnontwerp</h3>
-        <p>We beoordelen de mate van haarverlies, bespreken uw wensen en ontwerpen een haarlijn die aansluit bij uw gezichtsvorm, leeftijd en persoonlijke stijl. Voorafgaand aan de eerste behandeling vult u een intake- en toestemmingsformulier in, zodat we uw huid, gezondheid en eventuele contra-indicaties zorgvuldig kunnen beoordelen.</p>
-      </div>
-      <div class="process-row" data-reveal>
-        <span class="process-index">II</span>
-        <h3>Pigmentatie in lagen</h3>
-        <p>Met gespecialiseerde micro-naalden brengen we pigment aan, verspreid over gemiddeld 2 tot 3 sessies met enkele weken ertussen. Zo ontstaat een realistische 3D-illusie die naadloos overloopt in bestaande haargroei.</p>
-      </div>
-      <div class="process-row" data-reveal>
-        <span class="process-index">III</span>
-        <h3>Nazorg & onderhoud</h3>
-        <p>U ontvangt uitgebreide nazorginstructies. Afhankelijk van huidtype en levensstijl kan een periodieke touch-up het resultaat langdurig fris houden.</p>
-      </div>
+    <div class="proces-cta">
+      <p>Benieuwd hoeveel sessies uw situatie vraagt? Dat bepalen we samen tijdens het consult.</p>
+      <a href="#contact" class="btn-primary">Plan een consult</a>
     </div>
   </div>
 </section>
