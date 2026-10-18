@@ -277,6 +277,36 @@
   /* ---------- PROCESS ---------- */
   .proces-cta{margin-top:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
   .proces-cta p{color:var(--stone); font-size:14.5px; max-width:520px;}
+
+  /* ---------- WEGWIJZER (treatment chooser) ---------- */
+  .wijzer{max-width:760px; margin:38px auto 0; border:1px solid var(--line); background:var(--panel); padding:34px 32px 30px;}
+  .wijzer-step{display:none;}
+  .wijzer-step.on{display:block;}
+  .wijzer-q{font-family:var(--serif); font-weight:500; font-size:clamp(20px,2.6vw,26px); color:var(--cream); margin-bottom:6px;}
+  .wijzer-hint{font-family:var(--label); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--stone-dim); margin-bottom:22px;}
+  .wijzer-opts{display:flex; flex-direction:column; gap:10px;}
+  .wijzer-opts button{
+    text-align:left; width:100%; cursor:pointer; font-family:var(--body); font-size:15.5px;
+    color:var(--cream); background:transparent; border:1px solid var(--line);
+    padding:15px 18px; transition:border-color .25s, background .25s, color .25s;
+  }
+  .wijzer-opts button:hover{border-color:var(--gold); background:rgba(86,64,15,0.06);}
+  .wijzer-opts button:focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
+  .wijzer-foot{display:flex; justify-content:space-between; align-items:center; gap:14px; margin-top:22px; padding-top:16px; border-top:1px solid var(--line);}
+  .wijzer-foot button{
+    font-family:var(--label); font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    background:transparent; border:none; color:var(--stone-dim); cursor:pointer; padding:4px 0;
+  }
+  .wijzer-foot button:hover{color:var(--gold);}
+  .wijzer-count{font-family:var(--label); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--stone-dim);}
+  .wijzer-res h4{font-family:var(--serif); font-weight:500; font-size:clamp(21px,2.8vw,27px); color:var(--cream); margin-bottom:10px;}
+  .wijzer-res p{color:var(--stone); font-size:15.5px; margin-bottom:8px;}
+  .wijzer-res .wijzer-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:20px;}
+  .wijzer-note{
+    border-left:2px solid var(--gold); background:rgba(86,64,15,0.06);
+    padding:13px 16px; margin-top:14px; font-size:14.5px; color:var(--stone);
+  }
+  @media (max-width:600px){ .wijzer{padding:26px 20px 24px;} }
   .process-figure{
     margin:54px 0 10px; padding:38px 34px 30px;
     border:1px solid var(--line); background:rgba(255,255,255,0.42); position:relative;
@@ -608,6 +638,74 @@
           <p>Met de nieuwste Picosecond-laserapparatuur verwijderen we ongewenst pigment veilig en gecontroleerd — vaak een voorbereidende stap voor een nieuwe, verfijnde behandeling.</p>
           <a href="laser-tattoo-verwijdering.html" style="font-family:var(--label); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold);">Lees de volledige gids →</a>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="wegwijzer">
+  <div class="wrap">
+    <p class="eyebrow">Wegwijzer</p>
+    <h2 class="section-title">Welke behandeling past bij mij?</h2>
+    <p class="lede">Twee of drie vragen, en u weet waar u moet kijken. Het blijft een indicatie — wat echt passend is, bepalen we tijdens het consult.</p>
+
+    <div class="wijzer" id="wijzer">
+      <div class="wijzer-step on" data-step="0">
+        <p class="wijzer-q">Waar gaat het om?</p>
+        <p class="wijzer-hint">Vraag 1</p>
+        <div class="wijzer-opts">
+          <button type="button" data-next="hoofd">Mijn hoofdhuid of mijn haar</button>
+          <button type="button" data-next="brauw">Mijn wenkbrauwen</button>
+          <button type="button" data-next="litteken">Een litteken of striae</button>
+          <button type="button" data-next="weg">Iets wat juist weg moet</button>
+        </div>
+      </div>
+
+      <div class="wijzer-step" data-step="hoofd">
+        <p class="wijzer-q">Wat wilt u bereiken?</p>
+        <p class="wijzer-hint">Vraag 2 &middot; Hoofdhuid</p>
+        <div class="wijzer-opts">
+          <button type="button" data-res="smp">Een strakke, geschoren look met een scherpe haarlijn</button>
+          <button type="button" data-res="volume">Mijn haar wordt dunner &mdash; ik wil meer dichtheid zonder te scheren</button>
+          <button type="button" data-res="litteken-hoofd">Een litteken van een haartransplantatie minder zichtbaar maken</button>
+          <button type="button" data-res="correctie">Ik ben niet tevreden over eerdere pigmentatie</button>
+        </div>
+      </div>
+
+      <div class="wijzer-step" data-step="brauw">
+        <p class="wijzer-q">Wat speelt er?</p>
+        <p class="wijzer-hint">Vraag 2 &middot; Wenkbrauwen</p>
+        <div class="wijzer-opts">
+          <button type="button" data-res="brows">Ik wil vollere of beter gevormde wenkbrauwen</button>
+          <button type="button" data-res="correctie">Mijn oude permanente make-up is verkleurd, te donker of te hard</button>
+        </div>
+      </div>
+
+      <div class="wijzer-step" data-step="litteken">
+        <p class="wijzer-q">Waar zit het litteken?</p>
+        <p class="wijzer-hint">Vraag 2 &middot; Litteken</p>
+        <div class="wijzer-opts">
+          <button type="button" data-res="litteken-hoofd">Op mijn hoofdhuid, na een haartransplantatie</button>
+          <button type="button" data-res="medisch">Elders op mijn lichaam &mdash; na een operatie, of striae</button>
+        </div>
+      </div>
+
+      <div class="wijzer-step" data-step="weg">
+        <p class="wijzer-q">Wat moet er weg?</p>
+        <p class="wijzer-hint">Vraag 2 &middot; Verwijderen</p>
+        <div class="wijzer-opts">
+          <button type="button" data-res="laser">Een tattoo</button>
+          <button type="button" data-res="correctie">Permanente make-up of eerdere scalp micropigmentatie</button>
+        </div>
+      </div>
+
+      <div class="wijzer-step" data-step="result">
+        <div class="wijzer-res" id="wijzerRes" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="wijzer-foot">
+        <button type="button" id="wijzerBack">&larr; Terug</button>
+        <span class="wijzer-count" id="wijzerCount">Vraag 1 van 2</span>
       </div>
     </div>
   </div>
@@ -1258,6 +1356,99 @@ sections.forEach(s=>{ if(s) navIO.observe(s); });
     <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.362.688 4.564 1.876 6.418L4 29l7.77-1.84A11.93 11.93 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3zm0 21.818a9.78 9.78 0 0 1-4.99-1.363l-.358-.213-4.611 1.092 1.122-4.494-.234-.369A9.77 9.77 0 0 1 5.182 15c0-5.964 4.855-10.818 10.819-10.818S26.818 9.036 26.818 15 21.964 24.818 16.001 24.818zm5.63-8.146c-.308-.154-1.82-.898-2.102-1.001-.282-.103-.487-.154-.692.154-.205.309-.795 1.002-.975 1.207-.18.205-.359.231-.667.077-.308-.154-1.3-.479-2.477-1.528-.916-.816-1.535-1.825-1.715-2.133-.18-.308-.019-.474.135-.627.139-.138.308-.36.462-.54.154-.18.205-.309.308-.514.103-.205.051-.385-.026-.539-.077-.154-.692-1.666-.949-2.283-.25-.6-.504-.519-.692-.529-.18-.009-.385-.011-.59-.011-.205 0-.539.077-.821.385-.282.309-1.077 1.052-1.077 2.566 0 1.514 1.103 2.977 1.257 3.182.154.205 2.172 3.32 5.263 4.655.736.318 1.31.508 1.758.65.738.235 1.41.202 1.941.123.592-.088 1.82-.744 2.077-1.463.257-.719.257-1.335.18-1.463-.077-.129-.282-.205-.59-.36z"/>
   </svg>
 </a>
+
+<script>
+// ---- wegwijzer: two questions, one indication ----
+(function(){
+  const box = document.getElementById('wijzer');
+  if(!box) return;
+  const steps  = box.querySelectorAll('.wijzer-step');
+  const resEl  = document.getElementById('wijzerRes');
+  const backEl = document.getElementById('wijzerBack');
+  const cntEl  = document.getElementById('wijzerCount');
+  const history = [];
+
+  const RESULTS = {
+    smp: {
+      t: 'Scalp Micropigmentatie',
+      p: 'Pigment in de bovenste huidlaag bootst geschoren haarstoppels na, zodat een kale of dunner wordende hoofdhuid er weer vol en scherp afgetekend uitziet.',
+      href: 'scalp-micropigmentatie.html'
+    },
+    volume: {
+      t: 'Volumebehandeling',
+      p: 'Tussen uw bestaande haren brengen we pigment aan, waardoor de hoofdhuid minder doorschijnt en het haar optisch dichter lijkt. U houdt uw eigen lengte en kapsel.',
+      href: 'volumebehandeling.html'
+    },
+    'litteken-hoofd': {
+      t: 'Littekencamouflage',
+      p: 'Littekens van een FUE- of striptransplantatie laten zich vaak verzachten door de huid eromheen te benaderen met dezelfde micropigmentatietechniek.',
+      href: 'littekencamouflage.html'
+    },
+    brows: {
+      t: 'Hairstroke wenkbrauwen',
+      p: 'Haartje voor haartje aangebrachte pigmentlijnen volgen uw eigen groeirichting. Ook powder en combi brows zijn mogelijk, afhankelijk van huidtype en wens.',
+      href: 'hairstroke-wenkbrauwen.html'
+    },
+    laser: {
+      t: 'Laser tattoo verwijdering',
+      p: 'Met Picosecond-laserapparatuur wordt pigment in kleine deeltjes gebroken die het lichaam zelf afvoert. Dit gaat in meerdere sessies, met herstelperiodes ertussen.',
+      href: 'laser-tattoo-verwijdering.html'
+    },
+    correctie: {
+      t: 'Correctie &amp; Herstel',
+      p: 'Omdat wij pigment zowel aanbrengen als verwijderen, beoordelen we tijdens het consult of bestaand werk bijgewerkt kan worden, of dat het eerst weg moet waarna de huid herstelt en we opnieuw opbouwen.',
+      href: 'correctie-en-herstel.html'
+    },
+    medisch: {
+      t: 'Medische camouflage',
+      p: 'Camouflage van operatielittekens en striae werkt met dezelfde pigmenttechniek, maar vraagt een eigen opleiding en beoordeling per litteken.',
+      // deliberately no page link: not yet offered
+      note: 'Deze behandeling bieden wij nog niet aan &mdash; Allen volgt hier op dit moment de opleiding voor. Een litteken moet sowieso eerst <strong>6 tot 12 maanden</strong> genezen voordat camouflage overwogen kan worden, dus er is vrijwel altijd tijd. Laat uw gegevens achter via het contactformulier, dan nemen we contact op zodra we ermee starten.',
+      cta: 'Laat uw gegevens achter'
+    }
+  };
+
+  function show(name){
+    steps.forEach(s => s.classList.toggle('on', s.dataset.step === name));
+    const isResult = name === 'result';
+    const isFirst  = name === '0';
+    backEl.style.visibility = isFirst ? 'hidden' : 'visible';
+    cntEl.textContent = isResult ? 'Indicatie' : (isFirst ? 'Vraag 1 van 2' : 'Vraag 2 van 2');
+  }
+
+  function render(key){
+    const r = RESULTS[key];
+    if(!r) return;
+    let html = '<h4>' + r.t + '</h4><p>' + r.p + '</p>';
+    if(r.note) html += '<div class="wijzer-note">' + r.note + '</div>';
+    html += '<div class="wijzer-actions">';
+    if(r.href) html += '<a href="' + r.href + '" class="btn-primary">Lees meer over deze behandeling</a>';
+    html += '<a href="#contact" class="' + (r.href ? 'btn-ghost' : 'btn-primary') + '">' + (r.cta || 'Plan een consult') + '</a></div>';
+    resEl.innerHTML = html;
+    show('result');
+  }
+
+  box.addEventListener('click', function(e){
+    const b = e.target.closest('button');
+    if(!b) return;
+    if(b.id === 'wijzerBack'){
+      const prev = history.pop();
+      if(prev !== undefined) show(prev);
+      return;
+    }
+    const cur = box.querySelector('.wijzer-step.on');
+    if(b.dataset.next){
+      history.push(cur.dataset.step);
+      show(b.dataset.next);
+    } else if(b.dataset.res){
+      history.push(cur.dataset.step);
+      render(b.dataset.res);
+    }
+  });
+
+  show('0');
+})();
+</script>
 
 </body>
 </html>
