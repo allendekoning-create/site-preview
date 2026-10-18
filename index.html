@@ -188,6 +188,15 @@
   /* 'micropigmentatie' is a long word — ease the top of the clamp so it
      doesn't force an extra wrap in the hero column */
   .hero h1{font-size:clamp(34px,4.5vw,56px); line-height:1.1; text-wrap:balance;}
+
+  /* The pigment field is the greeting. On a dark ground a 0.72 veil still
+     let gold dots glow through; on a light one the same veil erases dark
+     dots entirely — through 0.74 sage even near-black lands ~19 off the
+     background. So the hero carries no veil at all and the field reads at
+     full strength. Body copy is unaffected: the dots are small and sparse,
+     and the text keeps its own 7.9:1 against the ground. Sections below
+     stay veiled, so the motion greets and then gets out of the way. */
+  .hero{background:transparent;}
   .hero h1 em{font-style:italic; color:var(--gold);}
   .hero p.lede{margin:24px 0 36px;}
   .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
@@ -1153,7 +1162,7 @@
         hy: Math.random()*H,
         x:0, y:0, p:0,
         r: Math.random()*1.5 + 0.55,
-        baseA: Math.random()*0.34 + 0.10,
+        baseA: Math.random()*0.30 + 0.16,
         wob: Math.random()*Math.PI*2,
         sp: 0.35 + Math.random()*0.55
       });
@@ -1202,9 +1211,9 @@
       d.p = pull;
       if(pull >= 0.16) hot.push(d);
 
-      const alpha = Math.min(0.95, d.baseA + pull*0.62) * fade;
+      const alpha = Math.min(0.88, d.baseA + pull*0.55) * fade;
       // muted gold warms toward bright gold as density builds
-      const col = pull > 0.30 ? '122,92,32' : '86,64,15';
+      const col = pull > 0.30 ? '38,42,34' : '58,62,53';
 
       cx.fillStyle = `rgba(${col},${alpha.toFixed(3)})`;
       cx.beginPath();
@@ -1222,8 +1231,8 @@
           const gx = d1.x-d2.x, gy = d1.y-d2.y;
           const gd = Math.hypot(gx,gy);
           if(gd < LINK){
-            const la = (1 - gd/LINK) * Math.min(d1.p,d2.p) * 0.42 * fade;
-            cx.strokeStyle = `rgba(86,64,15,${la.toFixed(3)})`;
+            const la = (1 - gd/LINK) * Math.min(d1.p,d2.p) * 0.50 * fade;
+            cx.strokeStyle = `rgba(58,62,53,${la.toFixed(3)})`;
             cx.beginPath(); cx.moveTo(d1.x,d1.y); cx.lineTo(d2.x,d2.y); cx.stroke();
           }
         }
