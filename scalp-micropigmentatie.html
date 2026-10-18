@@ -87,6 +87,37 @@
   .hero-media img, .hero-media video{width:100%; display:block; aspect-ratio:4/3; object-fit:cover;}
   footer{border-top:1px solid var(--line); padding:40px 6vw; text-align:center; color:var(--stone-dim); font-size:12px; font-family:var(--label); letter-spacing:0.06em;}
   footer a{color:var(--stone-dim); margin:0 8px; text-decoration:none;}
+  /* ---------- voor / na schuifbalk ---------- */
+  .reveal-wrap{margin:10px 0 44px;}
+  .reveal-card{
+    position:relative; aspect-ratio:4/5; max-width:460px; margin:0 auto;
+    border:1px solid var(--line); background:var(--panel);
+    overflow:hidden; user-select:none;
+  }
+  .reveal-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;}
+  #after-layer{clip-path:inset(0 50% 0 0);}
+  .reveal-handle{
+    position:absolute; top:0; bottom:0; left:50%; width:2px; background:var(--gold);
+    transform:translateX(-1px); cursor:ew-resize; z-index:5;
+  }
+  .reveal-handle::after{
+    content:'\21D4'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:44px; height:44px; border-radius:50%; background:var(--gold); color:var(--panel);
+    display:flex; align-items:center; justify-content:center; font-size:16px;
+  }
+  .reveal-input{
+    position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:ew-resize; margin:0;
+    -webkit-appearance:none; appearance:none; z-index:6;
+  }
+  .reveal-labels{
+    position:absolute; bottom:16px; left:16px; right:16px; display:flex; justify-content:space-between;
+    font-family:var(--label); font-size:10px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--cream); z-index:3; text-shadow:0 1px 3px rgba(0,0,0,0.5);
+  }
+  .reveal-caption{
+    margin-top:14px; font-size:12px; color:var(--stone-dim); text-align:center;
+    font-family:var(--label); letter-spacing:0.06em;
+  }
 </style>
 </head>
 <body>
@@ -110,6 +141,17 @@
 
   <p>Scalp micropigmentatie (SMP) is een niet-chirurgische behandeling waarbij duizenden micro-pigmentpuntjes in de hoofdhuid worden aangebracht om de illusie van kortgeschoren haarfollikels te creëren. Het resultaat is een strak gedefinieerde haarlijn en de uitstraling van meer dichtheid, zonder operatie en zonder hersteltijd van betekenis.</p>
 
+
+  <div class="reveal-wrap">
+    <div class="reveal-card">
+      <img id="before-layer" src="images/smp-voor.jpg" alt="Hoofdhuid voor scalp micropigmentatie" loading="lazy">
+      <img id="after-layer" src="images/smp-na.jpg" alt="Dezelfde hoofdhuid na scalp micropigmentatie" loading="lazy">
+      <div class="reveal-handle"></div>
+      <input type="range" class="reveal-input" id="revealRange" min="0" max="100" value="50" aria-label="Schuif om voor en na te vergelijken">
+      <div class="reveal-labels"><span>Voor</span><span>Na</span></div>
+    </div>
+    <p class="reveal-caption">Sleep om het verschil in dichtheid te zien</p>
+  </div>
   <h2>Wat is scalp micropigmentatie precies?</h2>
   <p>Met gespecialiseerde micro-naalden wordt pigment in de bovenste laag van de hoofdhuid aangebracht. Elk puntje wordt met de hand gepositioneerd om in grootte, richting en diepte op een natuurlijke haarfollikel te lijken. Doordat er met meerdere pigmenttinten en -diepten wordt gewerkt, ontstaat een driedimensionaal effect dat ook van dichtbij overtuigend oogt — in plaats van een vlakke, uniforme schaduw.</p>
 
@@ -166,5 +208,20 @@
   <a href="index.html">Home</a><a href="kennisbank.html">Kennisbank</a><a href="privacyverklaring.html">Privacyverklaring</a><a href="algemene-voorwaarden.html">Algemene Voorwaarden</a>
 </footer>
 
+
+<script>
+// ---- voor/na schuifbalk ----
+(function(){
+  const range = document.getElementById('revealRange');
+  const after = document.getElementById('after-layer');
+  const handle = document.querySelector('.reveal-handle');
+  if(!range || !after || !handle) return;
+  range.addEventListener('input', e=>{
+    const v = e.target.value;
+    after.style.clipPath = `inset(0 ${100-v}% 0 0)`;
+    handle.style.left = v+'%';
+  });
+})();
+</script>
 </body>
 </html>
