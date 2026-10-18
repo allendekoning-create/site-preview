@@ -178,10 +178,6 @@
     min-height:100vh; display:flex; align-items:center; position:relative;
     padding:140px 6vw 80px; overflow:hidden;
   }
-  #dotcanvas{
-    position:fixed; inset:0; width:100vw; height:100vh;
-    z-index:0; pointer-events:none; display:block;
-  }
   .hero-grid{
     position:relative; z-index:2; display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center; width:100%; max-width:1180px; margin:0 auto;
   }
@@ -189,13 +185,6 @@
      doesn't force an extra wrap in the hero column */
   .hero h1{font-size:clamp(34px,4.5vw,56px); line-height:1.1; text-wrap:balance;}
 
-  /* The pigment field is the greeting. On a dark ground a 0.72 veil still
-     let gold dots glow through; on a light one the same veil erases dark
-     dots entirely — through 0.74 sage even near-black lands ~19 off the
-     background. So the hero carries no veil at all and the field reads at
-     full strength. Body copy is unaffected: the dots are small and sparse,
-     and the text keeps its own 7.9:1 against the ground. Sections below
-     stay veiled, so the motion greets and then gets out of the way. */
   .hero{background:transparent;}
   .hero h1 em{font-style:italic; color:var(--gold);}
   .hero p.lede{margin:24px 0 36px;}
@@ -521,7 +510,6 @@
 </style>
 </head>
 <body>
-<canvas id="dotcanvas"></canvas>
 
 <header id="siteHeader">
   <a href="#home" class="brand">
@@ -1131,144 +1119,6 @@
 </footer>
 
 <script>
-// ---- interactive pigment field (site-wide, cursor reactive) ----
-(function(){
-  const cv = document.getElementById('dotcanvas');
-  const cx = cv.getContext('2d', { alpha:false });
-  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isMobile = matchMedia('(max-width:700px)').matches;
-  const DPR = Math.min(devicePixelRatio || 1, 2);
-
-  let W=0, H=0, dots=[], raf=null, scrollP=0;
-  const pointer = { x:-9999, y:-9999, active:false, seen:0 };
-  const hot = [];
-  let INFLUENCE = 190;
-  const LINK = 88;
-
-  function build(){
-    W = innerWidth; H = innerHeight;
-    cv.width = Math.floor(W*DPR); cv.height = Math.floor(H*DPR);
-    cx.setTransform(DPR,0,0,DPR,0,0);
-    INFLUENCE = isMobile ? 140 : Math.max(150, Math.min(W,H)*0.26);
-
-    // density scales with viewport so it never feels sparse or crowded
-    const target = Math.round((W*H) / (isMobile ? 13000 : 6600));
-    const count = Math.max(70, Math.min(target, isMobile ? 110 : 340));
-
-    dots = [];
-    for(let i=0;i<count;i++){
-      dots.push({
-        hx: Math.random()*W,
-        hy: Math.random()*H,
-        x:0, y:0, p:0,
-        r: Math.random()*1.5 + 0.55,
-        baseA: Math.random()*0.30 + 0.16,
-        wob: Math.random()*Math.PI*2,
-        sp: 0.35 + Math.random()*0.55
-      });
-    }
-    dots.forEach(d=>{ d.x=d.hx; d.y=d.hy; });
-  }
-
-  // with no pointer for a moment the field keeps moving on its own,
-  // which is also what touch visitors see
-  function anchor(time){
-    const quiet = !pointer.active || (performance.now() - pointer.seen) > 1800;
-    if(quiet || isMobile){
-      return { x: W*0.5 + Math.cos(time*0.21)*W*0.32, y: H*0.34 + Math.sin(time*0.16)*H*0.23 };
-    }
-    return { x: pointer.x, y: pointer.y };
-  }
-
-  function frame(t){
-    cx.fillStyle = '#b1b1a5';
-    cx.fillRect(0,0,W,H);
-    const time = t*0.001;
-    const a = anchor(time);
-    const fade = 1 - scrollP*0.4;
-    hot.length = 0;
-
-    for(let i=0;i<dots.length;i++){
-      const d = dots[i];
-
-      // slow ambient drift
-      const ax = reduceMotion ? 0 : Math.sin(time*0.34*d.sp + d.wob)*9;
-      const ay = reduceMotion ? 0 : Math.cos(time*0.27*d.sp + d.wob)*9;
-      let tx = d.hx + ax, ty = d.hy + ay;
-
-      const dx = a.x - tx, dy = a.y - ty;
-      const dist = Math.hypot(dx,dy);
-      let pull = 0;
-      if(dist < INFLUENCE){
-        pull = 1 - dist/INFLUENCE;
-        pull = pull*pull;
-        // pigment gathers toward the cursor: density builds where you look
-        tx += dx * pull * 0.34;
-        ty += dy * pull * 0.34;
-      }
-      d.x += (tx - d.x)*0.10;
-      d.y += (ty - d.y)*0.10;
-      d.p = pull;
-      if(pull >= 0.16) hot.push(d);
-
-      const alpha = Math.min(0.88, d.baseA + pull*0.55) * fade;
-      // muted gold warms toward bright gold as density builds
-      const col = pull > 0.30 ? '38,42,34' : '58,62,53';
-
-      cx.fillStyle = `rgba(${col},${alpha.toFixed(3)})`;
-      cx.beginPath();
-      cx.arc(d.x, d.y, d.r + pull*1.5, 0, 6.283);
-      cx.fill();
-    }
-
-    // hairline webbing only inside the cursor's reach, so it reads as needlework
-    if(!isMobile && hot.length > 1){
-      cx.lineWidth = 0.6;
-      for(let m=0;m<hot.length;m++){
-        const d1 = hot[m];
-        for(let n=m+1;n<hot.length;n++){
-          const d2 = hot[n];
-          const gx = d1.x-d2.x, gy = d1.y-d2.y;
-          const gd = Math.hypot(gx,gy);
-          if(gd < LINK){
-            const la = (1 - gd/LINK) * Math.min(d1.p,d2.p) * 0.50 * fade;
-            cx.strokeStyle = `rgba(58,62,53,${la.toFixed(3)})`;
-            cx.beginPath(); cx.moveTo(d1.x,d1.y); cx.lineTo(d2.x,d2.y); cx.stroke();
-          }
-        }
-      }
-    }
-
-    raf = requestAnimationFrame(frame);
-  }
-
-  addEventListener('pointermove', e=>{
-    pointer.x = e.clientX; pointer.y = e.clientY; pointer.active = true; pointer.seen = performance.now();
-  }, {passive:true});
-  addEventListener('pointerdown', e=>{
-    pointer.x = e.clientX; pointer.y = e.clientY; pointer.active = true; pointer.seen = performance.now();
-  }, {passive:true});
-  addEventListener('pointerleave', ()=>{ pointer.active = false; });
-  addEventListener('blur', ()=>{ pointer.active = false; });
-
-  // the field belongs to the hero; it recedes as you read on
-  addEventListener('scroll', ()=>{
-    scrollP = Math.min(1, scrollY / Math.max(1, innerHeight));
-  }, {passive:true});
-
-  let rt;
-  addEventListener('resize', ()=>{ clearTimeout(rt); rt = setTimeout(build, 200); });
-
-  // pause when tab is hidden to save battery
-  document.addEventListener('visibilitychange', ()=>{
-    if(document.hidden){ cancelAnimationFrame(raf); raf = null; }
-    else if(!raf){ raf = requestAnimationFrame(frame); }
-  });
-
-  build();
-  raf = requestAnimationFrame(frame);
-})();
-
 // ---- form submission (Web3Forms) ----
 function wireForm(formId, statusId){
   const form = document.getElementById(formId);
