@@ -185,7 +185,9 @@
   .hero-grid{
     position:relative; z-index:2; display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center; width:100%; max-width:1180px; margin:0 auto;
   }
-  .hero h1{font-size:clamp(38px,5.2vw,64px); line-height:1.08;}
+  /* 'micropigmentatie' is a long word — ease the top of the clamp so it
+     doesn't force an extra wrap in the hero column */
+  .hero h1{font-size:clamp(34px,4.5vw,56px); line-height:1.1; text-wrap:balance;}
   .hero h1 em{font-style:italic; color:var(--gold);}
   .hero p.lede{margin:24px 0 36px;}
   .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
@@ -548,7 +550,7 @@
   <div class="hero-grid">
     <div>
       <p class="eyebrow">Welkom &middot; Oisterwijk</p>
-      <h1>Een rustige praktijk voor pigment &mdash;<br>en voor het <em>weghalen</em> ervan.</h1>
+      <h1>Een rustige praktijk voor micropigmentatie<br>&mdash; en voor het <em>weghalen</em> ervan.</h1>
       <p class="lede">MHP Centrum zit in Medisch Centrum De Voorste Stroom in Oisterwijk. Hoofdhuid, wenkbrauwen, littekens, en het verwijderen van werk waar u niet blij mee bent. Altijd op afspraak, en altijd met een persoonlijk consult vooraf.</p>
       <div class="hero-ctas">
         <a href="#contact" class="btn-primary">Plan een persoonlijk consult</a>
