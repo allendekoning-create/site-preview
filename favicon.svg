@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MHP Centrum">
+  <rect width="64" height="64" rx="12" fill="#1b1f19"/>
+  <!-- One drop under gravity, at successive instants: the centre column of the
+       MHP mark, the teardrop taken from the logo's own path data. -->
+  <circle cx="32" cy="9.5" r="2.1" fill="#c9a55c"/>
+  <circle cx="32" cy="18"  r="3.1" fill="#c9a55c"/>
+  <g transform="translate(32,40.5) scale(0.95) translate(-193.14,-167.94)">
+    <path fill="#c9a55c" d="M200.24,178.06c0-3.92-7.1-27.34-7.1-27.34,0,0-7.1,23.41-7.1,27.34s3.18,7.1,7.1,7.1,7.1-3.18,7.1-7.1Z"/>
+  </g>
+</svg>
