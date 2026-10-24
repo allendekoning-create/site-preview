@@ -118,6 +118,45 @@
     margin-top:14px; font-size:12px; color:var(--stone-dim); text-align:center;
     font-family:var(--label); letter-spacing:0.06em;
   }
+
+  /* ---------- PROCESS PLATE (moved from the homepage) ----------
+     Dark matting: the three studies are light line-art composited
+     with mix-blend-mode:screen, which needs a dark ground. ------ */
+  .process-figure{
+    margin:30px 0 10px; padding:38px 34px 30px;
+    border:1px solid rgba(177,177,165,0.28); background:var(--frame); position:relative;
+  }
+  .process-figure:before, .process-figure:after{
+    content:''; position:absolute; width:14px; height:14px; border:1px solid rgba(201,165,92,0.5);
+  }
+  .process-figure:before{top:10px; left:10px; border-right:none; border-bottom:none;}
+  .process-figure:after{bottom:10px; right:10px; border-left:none; border-top:none;}
+  .pf-title{text-align:center; font-family:var(--serif); font-weight:500; font-size:clamp(20px,2.6vw,28px); color:#edefe7; margin:0 0 6px;}
+  .pf-title em{font-style:normal; color:#c9a55c;}
+  .pf-sub{text-align:center; font-family:var(--label); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#8d9285; margin:0 0 34px;}
+  .pf-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr));}
+  .pf-step{padding:0 22px; text-align:center;}
+  .pf-step + .pf-step{border-left:1px solid rgba(177,177,165,0.18);}
+  .pf-num{font-family:var(--serif); font-style:italic; font-size:26px; color:#c9a55c; display:block; margin-bottom:14px;}
+  .pf-step img{width:100%; max-width:230px; height:auto; display:block; margin:0 auto; mix-blend-mode:screen;}
+  .pf-foot{
+    text-align:center; margin:32px 0 0; padding-top:22px; border-top:1px solid rgba(177,177,165,0.18);
+    font-family:var(--serif); font-style:italic; font-size:15.5px; color:#b6b9ab;
+  }
+  @media (max-width:760px){
+    .process-figure{padding:30px 20px 24px;}
+    .pf-grid{grid-template-columns:minmax(0,1fr); gap:34px;}
+    .pf-step + .pf-step{border-left:none; border-top:1px solid rgba(177,177,165,0.18); padding-top:30px;}
+    .pf-step img{max-width:180px;}
+  }
+
+  /* ---------- NORWOOD CHART (moved from the homepage) ---------- */
+  .chart-card{
+    margin:30px 0 0; border:1px solid var(--line); background:var(--panel); padding:22px;
+  }
+  .chart-card img{width:100%; height:auto; display:block;}
+  .chart-note{margin-top:22px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .chart-note p{color:var(--stone); font-size:14px; max-width:560px; margin:0;}
 </style>
 </head>
 <body>
@@ -167,6 +206,25 @@
   <p>Of SMP de juiste keuze is, hangt af van onder meer huidtype, de mate en het patroon van haaruitval en persoonlijke voorkeur. Dit wordt tijdens het consult in kaart gebracht.</p>
 
   <h2>Hoe verloopt het proces?</h2>
+  <div class="process-figure">
+    <p class="pf-title">Van ontwerp naar <em>volledige dichtheid</em></p>
+    <p class="pf-sub">Het traject in drie stappen</p>
+    <div class="pf-grid">
+      <div class="pf-step">
+        <span class="pf-num">I</span>
+        <img src="images/proces-1.png" alt="Studie van een haarlijnontwerp met meetlijnen" width="512" height="512" loading="lazy" decoding="async">
+      </div>
+      <div class="pf-step">
+        <span class="pf-num">II</span>
+        <img src="images/proces-2.png" alt="Studie van een hoofdhuid met gedeeltelijk aangebracht pigment" width="512" height="512" loading="lazy" decoding="async">
+      </div>
+      <div class="pf-step">
+        <span class="pf-num">III</span>
+        <img src="images/proces-3.png" alt="Studie van een hoofdhuid met volledige, gelijkmatige pigmentdichtheid" width="512" height="512" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <p class="pf-foot">Dichtheid wordt opgebouwd, niet geforceerd.</p>
+  </div>
   <h3>1. Consult &amp; haarlijnontwerp</h3>
   <p>Elk traject begint met een persoonlijk consult. Samen wordt gekeken naar de mate van haarverlies, de gewenste dichtheid en een haarlijn die aansluit bij gezichtsvorm, leeftijd en stijl. Geen twee haarlijnen zijn hetzelfde — het ontwerp wordt volledig op maat gemaakt.</p>
   <h3>2. Pigmentatie in lagen</h3>
@@ -186,6 +244,17 @@
   <h2>SMP versus haartransplantatie</h2>
   <p>Een haartransplantatie verplaatst eigen haarfollikels en levert echte, groeiende haren op, maar vraagt een operatie, hersteltijd en is niet voor iedereen geschikt — bijvoorbeeld bij onvoldoende donorhaar. SMP is niet-chirurgisch, heeft nauwelijks downtime en creëert de visuele illusie van dichtheid of een geschoren look. De twee technieken worden ook vaak gecombineerd: SMP om transplantatielittekens te camoufleren of om de ogenschijnlijke dichtheid tussen getransplanteerd haar te verhogen. Lees meer in <a href="blog-smp-vs-haartransplantatie.html">SMP of haartransplantatie? De verschillen op een rij</a>.</p>
 
+  <h2 id="haarverlies">Waar staat u op de Norwood-schaal?</h2>
+  <p>Haaruitval verloopt bij iedereen anders. De Norwood-schaal toont de zeven stadia van mannelijke kaalheid &mdash; van een lichte terugtrekking van de haarlijn tot vergevorderde kaalheid. MHP biedt in vrijwel elk stadium een natuurlijk ogende oplossing.</p>
+
+  <div class="chart-card">
+    <img src="images/norwood-schaal.jpg" loading="lazy" decoding="async" alt="De 7 stadia van haaruitval volgens de Norwood-schaal">
+  </div>
+  <div class="chart-note">
+    <p>Herkent u zichzelf ergens tussen stadium 3 en 7? Micro Haarpigmentatie biedt ook bij vergevorderde haaruitval een natuurlijk ogende, onderhoudsarme oplossing.</p>
+    <a href="index.html#contact" class="btn-gold">Bespreek uw situatie</a>
+  </div>
+
   <div class="cta-box">
     <h3>Benieuwd of SMP bij u past?</h3>
     <p>Elk traject begint met een persoonlijk, vrijblijvend consult in Oisterwijk.</p>
@@ -198,7 +267,7 @@
       <a href="volumebehandeling.html">Volumebehandeling bij dunner haar</a>
       <a href="littekencamouflage.html">Littekencamouflage</a>
       <a href="veelgestelde-vragen.html">Veelgestelde vragen</a>
-      <a href="index.html#haarverlies">De Norwood-schaal uitgelegd</a>
+      <a href="#haarverlies">De Norwood-schaal uitgelegd</a>
     </div>
   </div>
 </div>
