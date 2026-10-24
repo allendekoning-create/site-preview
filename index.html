@@ -281,6 +281,11 @@
     color:var(--gold); font-variant-numeric:tabular-nums;
   }
   .shot-hero{aspect-ratio:4/3;}
+  /* the room shown whole, not cropped — source is 1600px so it is held to
+     the content column rather than run full-bleed, to stay sharp */
+  .shot-wide{margin:38px 0 0;}
+  .shot-wide img{aspect-ratio:4/3; max-height:620px;}
+  .shot-wide figcaption{text-align:center;}
   .shot-strip{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:16px; margin-top:38px;}
   .shot-strip .shot{aspect-ratio:3/2;}
   @media (max-width:820px){ .shot-strip{grid-template-columns:1fr 1fr;} }
@@ -571,6 +576,11 @@
     <p class="eyebrow">De praktijk</p>
     <h2 class="section-title">Waar u binnenloopt.</h2>
     <p class="lede">Geen inloop, geen wachtruimte vol mensen. E&eacute;n specialist, &eacute;&eacute;n cli&euml;nt per keer, in een medisch centrum aan de rand van Oisterwijk.</p>
+    <figure class="shot shot-wide">
+      <img src="images/praktijk-behandelkamer-breed.jpg" alt="De volledige behandelkamer van MHP Centrum: behandelstoel, laserapparatuur en ringlamp" loading="lazy" width="1600" height="1200">
+      <figcaption>De behandelkamer &mdash; &eacute;&eacute;n cli&euml;nt per keer</figcaption>
+    </figure>
+
     <div class="shot-strip">
       <figure class="shot"><img src="images/praktijk-ontvangst.jpg" alt="Ontvangstruimte van MHP Centrum" loading="lazy" width="1200" height="800"><figcaption>Ontvangst</figcaption></figure>
       <figure class="shot"><img src="images/praktijk-wachtruimte.jpg" alt="Wachtruimte met daglicht" loading="lazy" width="1200" height="800"><figcaption>Wachtruimte</figcaption></figure>
