@@ -92,6 +92,49 @@
   @media (max-width:640px){ .img-pair{grid-template-columns:1fr;} }
   footer{border-top:1px solid var(--line); padding:40px 6vw; text-align:center; color:var(--stone-dim); font-size:12px; font-family:var(--label); letter-spacing:0.06em;}
   footer a{color:var(--stone-dim); margin:0 8px; text-decoration:none;}
+
+  /* ---------- BEHANDELINGEN DROPDOWN ----------
+     Opens on hover where hover exists, and on click everywhere, so it
+     works the same on a phone. Escape and an outside click close it. */
+  .nav-drop{position:relative;}
+  .nav-drop-btn{
+    font-family:var(--label); font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--stone); background:none; border:none; padding:0; cursor:pointer;
+    display:inline-flex; align-items:center; gap:6px; line-height:inherit;
+  }
+  .nav-drop-btn:hover, .nav-drop-btn[aria-expanded="true"]{color:var(--cream);}
+  .nav-drop-btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+  .nav-caret{
+    width:0; height:0; border-left:3.5px solid transparent; border-right:3.5px solid transparent;
+    border-top:4px solid currentColor; transition:transform .2s ease;
+  }
+  .nav-drop-btn[aria-expanded="true"] .nav-caret{transform:rotate(180deg);}
+  .nav-drop-menu{
+    position:absolute; top:calc(100% + 16px); left:50%;
+    transform:translateX(-50%) translateY(-6px);
+    min-width:244px; z-index:120;
+    background:var(--panel); border:1px solid var(--line);
+    box-shadow:0 12px 34px rgba(26,29,24,0.16);
+    display:flex; flex-direction:column; padding:7px 0;
+    opacity:0; visibility:hidden;
+    transition:opacity .2s ease, transform .2s ease, visibility .2s;
+  }
+  .nav-drop-menu a{
+    display:block; padding:9px 20px; white-space:nowrap;
+    font-family:var(--label); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--stone); text-decoration:none;
+  }
+  .nav-drop-menu a:hover{background:var(--band); color:var(--cream);}
+  .nav-drop-menu a[aria-current="page"]{color:var(--gold); box-shadow:inset 2px 0 0 var(--gold);}
+  .nav-drop[data-open="true"] .nav-drop-menu{opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);}
+  @media (hover:hover){
+    .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);}
+  }
+  @media (max-width:760px){
+    .nav-drop-menu{left:auto; right:0; transform:translateY(-6px); min-width:210px;}
+    .nav-drop[data-open="true"] .nav-drop-menu{transform:translateY(0);}
+    @media (hover:hover){ .nav-drop:hover .nav-drop-menu{transform:translateY(0);} }
+  }
 </style>
 </head>
 <body>
@@ -99,6 +142,18 @@
 <header>
   <a href="index.html" class="brand-text">MHP CENTRUM</a>
   <div class="header-links">
+    <div class="nav-drop">
+      <button type="button" class="nav-drop-btn" aria-expanded="false" aria-haspopup="true">Behandelingen<span class="nav-caret" aria-hidden="true"></span></button>
+      <div class="nav-drop-menu">
+        <a href="scalp-micropigmentatie.html">Scalp micropigmentatie</a>
+        <a href="hairstroke-wenkbrauwen.html">Wenkbrauwen</a>
+        <a href="volumebehandeling.html">Volumebehandeling</a>
+        <a href="littekencamouflage.html">Littekencamouflage</a>
+        <a href="laser-tattoo-verwijdering.html">Laser tattoo-verwijdering</a>
+        <a href="correctie-en-herstel.html">Correctie en herstel</a>
+      </div>
+    </div>
+    <a href="over-allen-de-koning.html">Over mij</a>
     <a href="kennisbank.html">Kennisbank</a>
     <a href="veelgestelde-vragen.html">FAQ</a>
     <a href="index.html#contact" class="cta">Plan een consult</a>
@@ -207,5 +262,35 @@
   <a href="index.html">Home</a><a href="kennisbank.html">Kennisbank</a><a href="privacyverklaring.html">Privacyverklaring</a><a href="algemene-voorwaarden.html">Algemene Voorwaarden</a>
 </footer>
 
+<script>
+/* Behandelingen dropdown: click to toggle, outside click or Escape to close,
+   and mark the entry for the page you are on. */
+(function(){
+  var drops = document.querySelectorAll('.nav-drop');
+  function closeAll(){
+    drops.forEach(function(d){
+      d.dataset.open = 'false';
+      var b = d.querySelector('.nav-drop-btn');
+      if(b) b.setAttribute('aria-expanded','false');
+    });
+  }
+  drops.forEach(function(d){
+    var btn = d.querySelector('.nav-drop-btn');
+    if(!btn) return;
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = d.dataset.open === 'true';
+      closeAll();
+      if(!open){ d.dataset.open = 'true'; btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+  document.addEventListener('click', closeAll);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeAll(); });
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-drop-menu a').forEach(function(a){
+    if(a.getAttribute('href') === here) a.setAttribute('aria-current','page');
+  });
+})();
+</script>
 </body>
 </html>
