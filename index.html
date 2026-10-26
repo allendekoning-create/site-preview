@@ -424,6 +424,44 @@
   .faq-a p{padding-bottom:24px; color:var(--stone); font-size:14.5px; max-width:640px;}
 
   /* ---------- MODEL FORM ---------- */
+  /* --- Model worden: het aanbod --------------------------------- */
+  .model-deal{
+    display:grid; grid-template-columns:1fr 1fr; gap:26px 36px;
+    margin:30px 0 22px; padding:24px 0 4px;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .model-deal h4{
+    font-family:var(--label); font-size:11px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:10px;
+  }
+  .model-deal ul{list-style:none; margin:0 0 20px; padding:0;}
+  .model-deal li{
+    position:relative; padding-left:16px; margin-bottom:8px;
+    font-size:14.5px; line-height:1.6; color:var(--stone);
+  }
+  .model-deal li::before{
+    content:''; position:absolute; left:0; top:9px;
+    width:5px; height:5px; border-radius:50%; background:var(--gold);
+  }
+  .model-note{
+    font-family:var(--serif); font-style:italic; font-size:15.5px;
+    color:var(--cream); max-width:48ch;
+  }
+  .model-agree{
+    display:flex; gap:11px; align-items:flex-start;
+    margin:4px 0 20px; font-size:13.5px; line-height:1.55; color:var(--stone);
+    cursor:pointer;
+  }
+  .model-agree input{
+    flex:none; margin-top:3px; width:17px; height:17px; accent-color:var(--gold);
+  }
+  .form-field select{
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--line);
+    color:var(--cream); padding:10px 0; font-family:var(--body); font-size:15px;
+  }
+  .form-field select:focus{outline:none; border-color:var(--gold);}
+  .form-field select option{background:var(--panel); color:var(--cream);}
+  @media (max-width:760px){ .model-deal{grid-template-columns:1fr; gap:4px;} }
   .model-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
   .form-field{margin-bottom:20px;}
   .form-field label{font-family:var(--label); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--stone); display:block; margin-bottom:8px;}
@@ -877,11 +915,37 @@
   <div class="wrap model-grid">
     <div>
       <p class="eyebrow">Model worden</p>
-      <h2 class="section-title">Word model tegen<br>gereduceerd tarief.</h2>
-      <p class="lede">Op zoek naar een nieuwe haarlijn of hairstroke wenkbrauwen tegen een gereduceerd tarief? Vul uw gegevens in — ik denk graag met u mee via een korte virtuele intake.</p>
+      <h2 class="section-title">Word model en betaal<br><em>de helft</em>.</h2>
+      <p class="lede">MHP Centrum is net open in Oisterwijk en ik bouw mijn portfolio op. Daarom zoek ik
+         modellen: u betaalt <strong>50% van het normale tarief</strong>, en ik mag uw resultaat
+         fotograferen en laten zien.</p>
+
+      <div class="model-deal">
+        <div>
+          <h4>Wat u krijgt</h4>
+          <ul>
+            <li>50% korting op het volledige traject, niet alleen de eerste sessie</li>
+            <li>Dezelfde specialist, pigmenten en apparatuur als iedere andere cliënt</li>
+            <li>Een vrijblijvend consult vooraf &mdash; pas daarna beslist u</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Wat ik vraag</h4>
+          <ul>
+            <li>Voor-, tussen- en nafoto&rsquo;s van het behandelde gebied</li>
+            <li>Toestemming om die te tonen op website en social media</li>
+            <li>Standaard <strong>onherkenbaar</strong>: bij SMP is dat de achterkant van het hoofd,
+                geen gezicht. Herkenbaar in beeld mag, maar alleen als u dat apart aangeeft.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="model-note">Niet iedereen is geschikt &mdash; dat beoordeel ik eerlijk tijdens het consult.
+         Ben je dat niet, dan zeg ik dat, ook als dat mij een model kost.</p>
+
       <div class="loc-detail">
         <div>
-          <h4>Telefoon & WhatsApp</h4>
+          <h4>Telefoon &amp; WhatsApp</h4>
           <p>06 21 54 10 38</p>
         </div>
         <div>
@@ -890,17 +954,34 @@
         </div>
       </div>
     </div>
+
     <form id="modelForm">
       <input type="hidden" name="access_key" value="ab093397-b91c-40d7-b4a0-8097e1ec8680">
-      <input type="hidden" name="subject" value="Nieuwe aanvraag via mhpcentrum.nl">
+      <input type="hidden" name="subject" value="Modelaanvraag (50% korting) via mhpcentrum.nl">
       <input type="hidden" name="from_name" value="MHP Centrum website">
-      <div class="form-field"><label>Naam</label><input type="text" name="name" required></div>
-      <div class="form-field"><label>E-mail</label><input type="email" name="email" required></div>
-      <div class="form-field"><label>Telefoon</label><input type="tel" name="phone"></div>
-      <div class="form-field"><label>Bericht</label><textarea name="message"></textarea></div>
+      <div class="form-field"><label for="m_name">Naam</label><input id="m_name" type="text" name="name" required autocomplete="name"></div>
+      <div class="form-field"><label for="m_email">E-mail</label><input id="m_email" type="email" name="email" required autocomplete="email"></div>
+      <div class="form-field"><label for="m_phone">Telefoon</label><input id="m_phone" type="tel" name="phone" autocomplete="tel"></div>
+      <div class="form-field">
+        <label for="m_treatment">Welke behandeling</label>
+        <select id="m_treatment" name="behandeling" required>
+          <option value="">Maak een keuze</option>
+          <option>Scalp micropigmentatie</option>
+          <option>Volumebehandeling</option>
+          <option>Wenkbrauwen &mdash; hairstroke</option>
+          <option>Littekencamouflage</option>
+          <option>Laser tattoo-verwijdering</option>
+          <option>Weet ik nog niet</option>
+        </select>
+      </div>
+      <div class="form-field"><label for="m_message">Bericht</label><textarea id="m_message" name="message" placeholder="Vertel kort wat u zoekt."></textarea></div>
+      <label class="model-agree">
+        <input type="checkbox" name="fotos_akkoord" value="ja" required>
+        <span>Ik begrijp dat bij dit tarief foto&rsquo;s van het behandelde gebied worden gemaakt en getoond.
+              Hoe dat precies zit leg ik vast in het toestemmingsformulier, v&oacute;&oacute;r we beginnen.</span>
+      </label>
       <button class="submit-btn" type="submit">Verstuur aanvraag</button>
       <p id="formStatus" style="margin-top:14px; font-size:13px; color:var(--stone);"></p>
-    </form>
     </form>
   </div>
 </section>
