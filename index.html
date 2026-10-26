@@ -443,6 +443,19 @@
     content:''; position:absolute; left:0; top:9px;
     width:5px; height:5px; border-radius:50%; background:var(--gold);
   }
+  .model-crit-head{
+    font-family:var(--label); font-size:11px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:10px;
+  }
+  .model-crit{list-style:none; margin:0 0 20px; padding:0;}
+  .model-crit li{
+    position:relative; padding-left:16px; margin-bottom:8px;
+    font-size:14.5px; line-height:1.6; color:var(--stone);
+  }
+  .model-crit li::before{
+    content:''; position:absolute; left:0; top:9px;
+    width:5px; height:5px; border-radius:50%; background:var(--gold);
+  }
   .model-note{
     font-family:var(--serif); font-style:italic; font-size:15.5px;
     color:var(--cream); max-width:48ch;
@@ -915,10 +928,11 @@
   <div class="wrap model-grid">
     <div>
       <p class="eyebrow">Model worden</p>
-      <h2 class="section-title">Word model en betaal<br><em>de helft</em>.</h2>
-      <p class="lede">MHP Centrum is net open in Oisterwijk en ik bouw mijn portfolio op. Daarom zoek ik
-         modellen: u betaalt <strong>50% van het normale tarief</strong>, en ik mag uw resultaat
-         fotograferen en laten zien.</p>
+      <h2 class="section-title">Meld u aan als model<br>en kijk of u <em>in aanmerking</em> komt.</h2>
+      <p class="lede">MHP Centrum is net open in Oisterwijk en ik bouw mijn portfolio op. Daarvoor zoek ik
+         een <strong>beperkt aantal modellen</strong>: u betaalt 50% van het normale tarief, en ik mag
+         uw resultaat fotograferen en laten zien. Niet iedere aanmelding komt in aanmerking &mdash;
+         ik beoordeel dat tijdens een kort, vrijblijvend consult.</p>
 
       <div class="model-deal">
         <div>
@@ -940,8 +954,15 @@
         </div>
       </div>
 
-      <p class="model-note">Niet iedereen is geschikt &mdash; dat beoordeel ik eerlijk tijdens het consult.
-         Ben je dat niet, dan zeg ik dat, ook als dat mij een model kost.</p>
+      <h4 class="model-crit-head">Wanneer komt u in aanmerking?</h4>
+      <ul class="model-crit">
+        <li>Uw situatie laat een duidelijk verschil zien op foto</li>
+        <li>U kunt meerdere sessies plannen, meestal twee tot drie</li>
+        <li>U vindt het prettig dat uw resultaat getoond wordt</li>
+      </ul>
+
+      <p class="model-note">Niet iedere aanmelding wordt een model &mdash; dat beoordeel ik eerlijk
+         tijdens het consult. Komt u niet in aanmerking, dan zeg ik dat, ook als dat mij een model kost.</p>
 
       <div class="loc-detail">
         <div>
@@ -957,7 +978,7 @@
 
     <form id="modelForm">
       <input type="hidden" name="access_key" value="ab093397-b91c-40d7-b4a0-8097e1ec8680">
-      <input type="hidden" name="subject" value="Modelaanvraag (50% korting) via mhpcentrum.nl">
+      <input type="hidden" name="subject" value="Modelaanmelding (50% korting) via mhpcentrum.nl">
       <input type="hidden" name="from_name" value="MHP Centrum website">
       <div class="form-field"><label for="m_name">Naam</label><input id="m_name" type="text" name="name" required autocomplete="name"></div>
       <div class="form-field"><label for="m_email">E-mail</label><input id="m_email" type="email" name="email" required autocomplete="email"></div>
@@ -980,7 +1001,7 @@
         <span>Ik begrijp dat bij dit tarief foto&rsquo;s van het behandelde gebied worden gemaakt en getoond.
               Hoe dat precies zit leg ik vast in het toestemmingsformulier, v&oacute;&oacute;r we beginnen.</span>
       </label>
-      <button class="submit-btn" type="submit">Verstuur aanvraag</button>
+      <button class="submit-btn" type="submit">Aanmelden als model</button>
       <p id="formStatus" style="margin-top:14px; font-size:13px; color:var(--stone);"></p>
     </form>
   </div>
