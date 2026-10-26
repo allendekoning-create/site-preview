@@ -948,8 +948,8 @@
           <ul>
             <li>Voor-, tussen- en nafoto&rsquo;s van het behandelde gebied</li>
             <li>Toestemming om die te tonen op website en social media</li>
-            <li>Standaard <strong>onherkenbaar</strong>: bij SMP is dat de achterkant van het hoofd,
-                geen gezicht. Herkenbaar in beeld mag, maar alleen als u dat apart aangeeft.</li>
+            <li>Foto&rsquo;s waarop u <strong>herkenbaar</strong> in beeld bent. Juist het gezicht
+                en de expressie laten zien wat een behandeling met iemand doet.</li>
           </ul>
         </div>
       </div>
@@ -961,8 +961,12 @@
         <li>U vindt het prettig dat uw resultaat getoond wordt</li>
       </ul>
 
-      <p class="model-note">Niet iedere aanmelding wordt een model &mdash; dat beoordeel ik eerlijk
-         tijdens het consult. Komt u niet in aanmerking, dan zeg ik dat, ook als dat mij een model kost.</p>
+      <p class="model-note">Liever niet herkenbaar op de foto? Volkomen begrijpelijk &mdash; dan behandel
+         ik u gewoon tegen het normale tarief, met precies dezelfde zorg.</p>
+
+      <p class="model-note" style="margin-top:14px">Niet iedere aanmelding wordt een model. Dat beoordeel
+         ik eerlijk tijdens het consult, en komt u niet in aanmerking dan zeg ik dat ook als het mij
+         een model kost.</p>
 
       <div class="loc-detail">
         <div>
@@ -998,8 +1002,9 @@
       <div class="form-field"><label for="m_message">Bericht</label><textarea id="m_message" name="message" placeholder="Vertel kort wat u zoekt."></textarea></div>
       <label class="model-agree">
         <input type="checkbox" name="fotos_akkoord" value="ja" required>
-        <span>Ik begrijp dat bij dit tarief foto&rsquo;s van het behandelde gebied worden gemaakt en getoond.
-              Hoe dat precies zit leg ik vast in het toestemmingsformulier, v&oacute;&oacute;r we beginnen.</span>
+        <span>Ik begrijp dat bij dit tarief foto&rsquo;s worden gemaakt waarop ik herkenbaar in beeld ben,
+              en dat die getoond mogen worden. Dit leggen we v&oacute;&oacute;r de behandeling vast in het
+              toestemmingsformulier, en ik kan het daarna altijd intrekken.</span>
       </label>
       <button class="submit-btn" type="submit">Aanmelden als model</button>
       <p id="formStatus" style="margin-top:14px; font-size:13px; color:var(--stone);"></p>
@@ -1246,7 +1251,8 @@
         <a href="#contact">Contact</a>
         <a href="kennisbank.html">Kennisbank</a>
         <a href="blog.html">Blog</a>
-      </div>
+          <a href="#" data-mhp-reopen>Cookievoorkeur</a>
+        </div>
     </div>
     <hr class="hairline" style="margin:36px 0;">
     <div class="footer-bottom">
@@ -1283,6 +1289,8 @@ function wireForm(formId, statusId){
       const result = await res.json();
       if(result.success){
         btn.textContent = 'Verzonden ✓';
+
+        if (window.mhpTrack) window.mhpTrack('lead', { soort: formId === 'modelForm' ? 'modelaanmelding' : 'contactformulier' });
         status.textContent = 'Bedankt voor uw bericht. We nemen zo snel mogelijk contact met u op.';
         form.reset();
       } else {
@@ -1482,5 +1490,7 @@ sections.forEach(s=>{ if(s) navIO.observe(s); });
   });
 })();
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/js/mhp.js" defer></script>
 </body>
 </html>
