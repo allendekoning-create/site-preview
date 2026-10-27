@@ -51,7 +51,7 @@
     --ink:var(--ground); --charcoal:var(--band); --panel:var(--surface);
     --gold:var(--accent); --gold-bright:var(--accent-bright); --cream:var(--text);
     --stone:var(--text-soft); --stone-dim:var(--text-soft); --line:rgba(26,29,24,0.24);
-    --serif:'Fraunces', serif; --label:'Oswald', sans-serif; --body:'Inter', sans-serif;
+    --star:#c98a14; --serif:'Fraunces', serif; --label:'Oswald', sans-serif; --body:'Inter', sans-serif;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{background:#b1b1a5;}
@@ -74,6 +74,22 @@
   p strong, strong{color:var(--cream); font-weight:500;}
   ul, ol{margin:0 0 20px 22px; color:var(--stone);}
   li{margin-bottom:8px;}
+  /* ---------- PRIJS, REVIEWS EN MODELAANBOD ---------- */
+  .smp-rev-kop{display:flex; align-items:baseline; justify-content:space-between; gap:10px 20px; flex-wrap:wrap; margin:56px 0 18px;}
+  .smp-rev-kop .eyebrow{margin:0;}
+  .smp-rev-alle{font-family:var(--label); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); text-decoration:none; white-space:nowrap; border-bottom:1px solid rgba(var(--accent-rgb),0.38); padding-bottom:3px;}
+  .smp-rev-alle:hover{color:var(--gold-bright); border-bottom-color:var(--gold-bright);}
+  .smp-rev{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;}
+  .smp-rev li{margin:0; background:rgba(242,242,236,0.88); border:1px solid rgba(26,29,24,0.12); padding:20px 20px 18px; display:flex; flex-direction:column;}
+  .smp-rev .sterren{color:var(--star); font-size:14px; letter-spacing:0.2em; line-height:1; margin-bottom:11px;}
+  .smp-rev blockquote{margin:0 0 15px; font-size:14px; line-height:1.65; color:var(--stone); flex:1;}
+  .smp-rev .wie{font-family:var(--label); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--cream);}
+  .smp-rev .wie span{color:var(--stone-dim);}
+  .smp-model{margin:56px 0; padding:32px 34px 30px; background:var(--charcoal); border:1px solid var(--line);}
+  .smp-model h3{margin:0 0 10px; font-size:22px; color:var(--gold-bright);}
+  .smp-model ul{margin:16px 0 18px 20px;}
+  .smp-model li{margin-bottom:7px;}
+  @media (max-width:560px){ .smp-model{padding:26px 22px 24px;} }
   .cta-box{margin:56px 0; padding:36px; border:1px solid var(--line); background:var(--panel); text-align:center;}
   .cta-box h3{margin-top:0; font-size:22px;}
   .cta-box p{max-width:480px; margin-left:auto; margin-right:auto;}
@@ -295,6 +311,9 @@
   <h2>Hoeveel sessies zijn er nodig?</h2>
   <p>De meeste trajecten bestaan uit <strong>2 tot 3 sessies</strong>, verspreid over enkele weken. Dit geeft de huid tussentijds rust en maakt het mogelijk om resultaat en dichtheid tussentijds te evalueren voordat de volgende laag wordt toegevoegd.</p>
 
+  <h2>Wat kost een SMP-traject?</h2>
+  <p>De prijs volgt uit het aantal zones dat we behandelen: <strong>&euro;&nbsp;600 per zone</strong>. Een volledig traject beslaat meestal drie tot vier zones, maar alleen de haarlijn aanzetten kan ook. Welke zones nodig zijn tekenen we samen op tijdens het <strong>gratis en vrijblijvende consult</strong>, zodat de prijs vaststaat voordat we beginnen. Op de <a href="tarieven.html">tarievenpagina</a> staat de zone-indeling met een tekening erbij.</p>
+
   <h2>Doet de behandeling pijn?</h2>
   <p>De meeste cliënten omschrijven de sensatie als mild en doof, vergelijkbaar met een lichte tatoeage. Op verzoek wordt een verdovende crème toegepast om het comfort tijdens de sessie te verhogen.</p>
 
@@ -315,9 +334,39 @@
     <a href="index.html#contact" class="btn-gold">Bespreek uw situatie</a>
   </div>
 
+
+  <div class="smp-rev-kop">
+    <p class="eyebrow">Wat cli&euml;nten zeggen</p>
+    <a class="smp-rev-alle" href="https://maps.app.goo.gl/S1JwJFams4auNsGG7" target="_blank" rel="noopener noreferrer">Alle beoordelingen op Google &rarr;</a>
+  </div>
+  <ul class="smp-rev">
+    <li>
+      <p class="sterren" role="img" aria-label="5 van de 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+      <blockquote>Bij binnenkomst denk je al: wat een fijne plek om te zijn. Daarnaast krijg je goede uitleg over de behandeling en word je echt even in de watten gelegd! :)</blockquote>
+      <p class="wie">Kim van der H. <span>&middot; oktober 2026</span></p>
+    </li>
+    <li>
+      <p class="sterren" role="img" aria-label="5 van de 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+      <blockquote>Wat een heerlijke behandeling en erg professioneel. En een hele vriendelijke, fijne man</blockquote>
+      <p class="wie">Lucie van den A. <span>&middot; oktober 2026</span></p>
+    </li>
+  </ul>
+
+  <div class="smp-model">
+    <h3>Model worden: 50% korting</h3>
+    <p>MHP Centrum is net open in Oisterwijk en ik bouw mijn portfolio op. Daarvoor zoek ik een <strong>beperkt aantal modellen</strong> voor scalp micropigmentatie: u betaalt 50% van het normale tarief, en ik mag uw resultaat fotograferen en laten zien.</p>
+    <ul>
+      <li>50% korting op het volledige traject, niet alleen de eerste sessie</li>
+      <li>Dezelfde specialist, pigmenten en apparatuur als iedere andere cli&euml;nt</li>
+      <li>Foto&rsquo;s waarop u <strong>herkenbaar</strong> in beeld bent &mdash; dat is de afspraak die tegenover de korting staat</li>
+    </ul>
+    <p>Niet iedere aanmelding komt in aanmerking. Dat beoordeel ik eerlijk tijdens het gratis consult, en komt u niet in aanmerking dan zeg ik dat ook.</p>
+    <a href="index.html#model" class="btn-gold">Bekijk of u in aanmerking komt</a>
+  </div>
+
   <div class="cta-box">
     <h3>Benieuwd of SMP bij u past?</h3>
-    <p>Elk traject begint met een persoonlijk, vrijblijvend consult in Oisterwijk.</p>
+    <p>Elk traject begint met een gratis en vrijblijvend consult in Oisterwijk.</p>
     <a href="index.html#contact" class="btn-gold">Plan een consult</a>
   </div>
 
