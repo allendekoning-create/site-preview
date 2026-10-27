@@ -424,7 +424,8 @@
   .faq-a p{padding-bottom:24px; color:var(--stone); font-size:14.5px; max-width:640px;}
 
   /* ---------- MODEL FORM ---------- */
-  .model-shot{margin:26px 0 0;}
+  .model-aside{display:flex; flex-direction:column;}
+  .model-shot{margin:34px 0 0;}
   .model-shot img{width:100%; height:auto; display:block; border:1px solid var(--line);}
   .model-shot figcaption{
     margin-top:10px; font-size:13px; line-height:1.5; color:var(--stone-dim);
@@ -481,7 +482,7 @@
   .form-field select:focus{outline:none; border-color:var(--gold);}
   .form-field select option{background:var(--panel); color:var(--cream);}
   @media (max-width:760px){ .model-deal{grid-template-columns:1fr; gap:4px;} }
-  .model-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  .model-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:60px; align-items:start;}
   .form-field{margin-bottom:20px;}
   .form-field label{font-family:var(--label); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--stone); display:block; margin-bottom:8px;}
   .form-field input, .form-field textarea{
@@ -503,7 +504,10 @@
     background:var(--gold); color:var(--ink); padding:16px 32px; border:none; cursor:pointer; margin-top:10px;
   }
   .submit-btn:hover{background:var(--gold-bright);}
-  @media (max-width:820px){ .model-grid{grid-template-columns:1fr;} }
+  @media (max-width:820px){
+    .model-grid{grid-template-columns:1fr;}
+    .model-shot{order:-1; margin:0 0 30px;}
+  }
 
   /* ---------- LOCATION ---------- */
   .loc-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
@@ -940,13 +944,6 @@
          uw resultaat fotograferen en laten zien. Niet iedere aanmelding komt in aanmerking &mdash;
          ik beoordeel dat tijdens een kort, vrijblijvend consult.</p>
 
-      <figure class="model-shot">
-        <img src="images/model-pigmenten.jpg" width="1400" height="788" loading="lazy" decoding="async"
-             alt="Pigmentflesjes en de machine klaargelegd voor een behandeling bij MHP Centrum">
-        <figcaption>Dezelfde pigmenten en apparatuur als bij iedere andere behandeling &mdash; de machine
-          in een steriele hoes, het pigment uit een verzegeld flesje.</figcaption>
-      </figure>
-
       <div class="model-deal">
         <div>
           <h4>Wat u krijgt</h4>
@@ -993,35 +990,44 @@
       </div>
     </div>
 
-    <form id="modelForm">
-      <input type="hidden" name="access_key" value="ab093397-b91c-40d7-b4a0-8097e1ec8680">
-      <input type="hidden" name="subject" value="Modelaanmelding (50% korting) via mhpcentrum.nl">
-      <input type="hidden" name="from_name" value="MHP Centrum website">
-      <div class="form-field"><label for="m_name">Naam</label><input id="m_name" type="text" name="name" required autocomplete="name"></div>
-      <div class="form-field"><label for="m_email">E-mail</label><input id="m_email" type="email" name="email" required autocomplete="email"></div>
-      <div class="form-field"><label for="m_phone">Telefoon</label><input id="m_phone" type="tel" name="phone" autocomplete="tel"></div>
-      <div class="form-field">
-        <label for="m_treatment">Welke behandeling</label>
-        <select id="m_treatment" name="behandeling" required>
-          <option value="">Maak een keuze</option>
-          <option>Scalp micropigmentatie</option>
-          <option>Volumebehandeling</option>
-          <option>Wenkbrauwen &mdash; hairstroke</option>
-          <option>Littekencamouflage</option>
-          <option>Laser tattoo-verwijdering</option>
-          <option>Weet ik nog niet</option>
-        </select>
-      </div>
-      <div class="form-field"><label for="m_message">Bericht</label><textarea id="m_message" name="message" placeholder="Vertel kort wat u zoekt."></textarea></div>
-      <label class="model-agree">
-        <input type="checkbox" name="fotos_akkoord" value="ja" required>
-        <span>Ik begrijp dat bij dit tarief foto&rsquo;s worden gemaakt waarop ik herkenbaar in beeld ben,
-              en dat die getoond mogen worden. Dat is de afspraak die tegenover de korting staat.
-              We leggen het v&oacute;&oacute;r de behandeling samen vast in het toestemmingsformulier.</span>
-      </label>
-      <button class="submit-btn" type="submit">Aanmelden als model</button>
-      <p id="formStatus" style="margin-top:14px; font-size:13px; color:var(--stone);"></p>
-    </form>
+    <div class="model-aside">
+      <form id="modelForm">
+        <input type="hidden" name="access_key" value="ab093397-b91c-40d7-b4a0-8097e1ec8680">
+        <input type="hidden" name="subject" value="Modelaanmelding (50% korting) via mhpcentrum.nl">
+        <input type="hidden" name="from_name" value="MHP Centrum website">
+        <div class="form-field"><label for="m_name">Naam</label><input id="m_name" type="text" name="name" required autocomplete="name"></div>
+        <div class="form-field"><label for="m_email">E-mail</label><input id="m_email" type="email" name="email" required autocomplete="email"></div>
+        <div class="form-field"><label for="m_phone">Telefoon</label><input id="m_phone" type="tel" name="phone" autocomplete="tel"></div>
+        <div class="form-field">
+          <label for="m_treatment">Welke behandeling</label>
+          <select id="m_treatment" name="behandeling" required>
+            <option value="">Maak een keuze</option>
+            <option>Scalp micropigmentatie</option>
+            <option>Volumebehandeling</option>
+            <option>Wenkbrauwen &mdash; hairstroke</option>
+            <option>Littekencamouflage</option>
+            <option>Laser tattoo-verwijdering</option>
+            <option>Weet ik nog niet</option>
+          </select>
+        </div>
+        <div class="form-field"><label for="m_message">Bericht</label><textarea id="m_message" name="message" placeholder="Vertel kort wat u zoekt."></textarea></div>
+        <label class="model-agree">
+          <input type="checkbox" name="fotos_akkoord" value="ja" required>
+          <span>Ik begrijp dat bij dit tarief foto&rsquo;s worden gemaakt waarop ik herkenbaar in beeld ben,
+                en dat die getoond mogen worden. Dat is de afspraak die tegenover de korting staat.
+                We leggen het v&oacute;&oacute;r de behandeling samen vast in het toestemmingsformulier.</span>
+        </label>
+        <button class="submit-btn" type="submit">Aanmelden als model</button>
+        <p id="formStatus" style="margin-top:14px; font-size:13px; color:var(--stone);"></p>
+      </form>
+
+      <figure class="model-shot">
+        <img src="images/model-behandeling.jpg" width="1200" height="900" loading="lazy" decoding="async"
+             alt="Allen de Koning zet met de machine in een steriele hoes haartjes in de wenkbrauw van een cli&euml;nt die ontspannen ligt">
+        <figcaption>Zo ziet een behandeling eruit. De foto&rsquo;s die ik van een model maak gaan over
+          dit soort momenten &mdash; en over het resultaat, weken later.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
