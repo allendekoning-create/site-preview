@@ -19,7 +19,7 @@
   var CONFIG = {
     ga4:       '',   // Google Analytics 4,   e.g. 'G-XXXXXXXXXX'
     adsId:     'AW-18490080782',   // Google Ads
-    adsLabel:  '',   // Ads conversion label, e.g. 'AbC-D_efG'
+    adsLabel:  'huAyCIqxx6IdEI784PBE',   // Ads conversielabel (Offerte aanvragen)
     metaPixel: '979053561309307'    // Meta pixel
   };
 
