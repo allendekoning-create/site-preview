@@ -190,6 +190,15 @@
   .hero h1 em{font-style:italic; color:var(--gold);}
   .hero p.lede{margin:24px 0 36px;}
   .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+  .hero-rating{
+    display:inline-flex; align-items:center; gap:9px; margin:0 0 22px;
+    padding:9px 15px; text-decoration:none;
+    background:rgba(242,242,236,0.82); border:1px solid rgba(26,29,24,0.12);
+    font-family:var(--label); font-size:11px; letter-spacing:0.11em;
+    text-transform:uppercase; color:var(--text-soft);
+  }
+  .hero-rating .stars{color:var(--star); font-size:14px; letter-spacing:0.12em; line-height:1;}
+  .hero-rating:hover{color:var(--text); border-color:rgba(26,29,24,0.26);}
   .btn-primary{
     font-family:var(--label); font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
     background:var(--gold); color:var(--ink); padding:16px 30px; transition:background .3s;
@@ -747,6 +756,11 @@
       <p class="eyebrow">Welkom &middot; Oisterwijk</p>
       <h1>Een rustige praktijk voor micropigmentatie<br>&mdash; en voor het <em>weghalen</em> ervan.</h1>
       <p class="lede">MHP Centrum zit in Medisch Centrum De Voorste Stroom in Oisterwijk. Hoofdhuid, wenkbrauwen, littekens, en het verwijderen van werk waar u niet blij mee bent. Altijd op afspraak, en altijd met een persoonlijk consult vooraf.</p>
+
+      <a class="hero-rating" href="#reviews">
+        <span class="stars" role="img" aria-label="Vijf sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span>Beoordeeld op Google</span>
+      </a>
       <div class="hero-ctas">
         <a href="#contact" class="btn-primary">Plan een persoonlijk consult</a>
         <a href="#behandelingen" class="btn-ghost">Bekijk de behandelingen</a>
