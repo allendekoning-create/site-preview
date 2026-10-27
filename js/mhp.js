@@ -18,7 +18,7 @@
   // -------------------------------------------------------------
   var CONFIG = {
     ga4:       '',   // Google Analytics 4,   e.g. 'G-XXXXXXXXXX'
-    adsId:     '',   // Google Ads,           e.g. 'AW-123456789'
+    adsId:     'AW-18490080782',   // Google Ads
     adsLabel:  '',   // Ads conversion label, e.g. 'AbC-D_efG'
     metaPixel: ''    // Meta pixel,           e.g. '1234567890'
   };
