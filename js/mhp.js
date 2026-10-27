@@ -20,7 +20,15 @@
     ga4:       '',   // Google Analytics 4,   e.g. 'G-XXXXXXXXXX'
     adsId:     'AW-18490080782',   // Google Ads
     adsLabel:  'huAyCIqxx6IdEI784PBE',   // Ads conversielabel (Offerte aanvragen)
-    metaPixel: '979053561309307'    // Meta pixel
+    metaPixel: '979053561309307',  // Meta pixel
+
+    // Wat een aanvraag ongeveer waard is. Niet de behandelprijs, maar de
+    // behandelprijs maal het deel van de aanvragen dat klant wordt. Smart
+    // Bidding stuurt hierop; laat je dit op 1 staan, dan is een tyre-kicker
+    // evenveel waard als een volledig traject.
+    leadValue:    200,   // ingevuld formulier
+    contactValue:  80,   // tik op WhatsApp of telefoon
+    currency:     'EUR'
   };
 
   var STORE = 'mhp-consent';
@@ -129,12 +137,19 @@
     if (CONFIG.ga4) {
       gtag('event', name, params);
     }
-    if (CONFIG.adsId && CONFIG.adsLabel && name === 'lead') {
+    // Zowel het formulier als een tik op WhatsApp of telefoon telt als
+    // conversie, met een eigen waarde. Bij dit volume heeft Smart Bidding
+    // anders te weinig signaal om iets van te leren.
+    if (CONFIG.adsId && CONFIG.adsLabel && (name === 'lead' || name === 'contact')) {
       gtag('event', 'conversion', {
-        send_to: CONFIG.adsId + '/' + CONFIG.adsLabel
+        send_to: CONFIG.adsId + '/' + CONFIG.adsLabel,
+        value: (name === 'lead') ? CONFIG.leadValue : CONFIG.contactValue,
+        currency: CONFIG.currency
       });
     }
     if (window.fbq) {
+      params.value = (name === 'lead') ? CONFIG.leadValue : CONFIG.contactValue;
+      params.currency = CONFIG.currency;
       window.fbq('track', name === 'lead' ? 'Lead' : 'Contact', params);
     }
   };
