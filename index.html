@@ -215,6 +215,49 @@
   .trust-item .label{font-family:var(--label); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); line-height:1.5;}
   @media (max-width:820px){ .trust-grid{grid-template-columns:1fr 1fr; row-gap:34px;} }
 
+  /* ---- Reviews --------------------------------------------------
+     Echte Google-beoordelingen, letterlijk overgenomen. Onder 820px
+     wordt het raster een veegbare strip. ------------------------- */
+  .reviews-band{
+    padding:40px 6vw; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--band);
+  }
+  .reviews-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    gap:14px 24px; flex-wrap:wrap; margin-bottom:22px;
+  }
+  .reviews-head .eyebrow{margin:0;}
+  .reviews-all{
+    font-family:var(--label); font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--accent); text-decoration:none; white-space:nowrap;
+    border-bottom:1px solid rgba(var(--accent-rgb),0.38); padding-bottom:3px;
+  }
+  .reviews-all:hover{color:var(--accent-bright); border-bottom-color:var(--accent-bright);}
+  .reviews-grid{
+    list-style:none; margin:0; padding:0;
+    display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px;
+  }
+  .review{
+    background:rgba(242,242,236,0.45); border:1px solid rgba(26,29,24,0.12);
+    padding:22px 22px 20px; display:flex; flex-direction:column;
+  }
+  .review-stars{margin:0 0 12px; color:var(--accent); font-size:13px; letter-spacing:0.2em; line-height:1;}
+  .review blockquote{margin:0 0 16px; font-size:14px; line-height:1.65; color:var(--text-soft); flex:1;}
+  .review-by{
+    margin:0; font-family:var(--label); font-size:11px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--text);
+  }
+  .review-by span{color:var(--text-soft);}
+  @media (max-width:1080px){ .reviews-grid{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  @media (max-width:820px){
+    .reviews-grid{
+      grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:80%;
+      overflow-x:auto; overscroll-behavior-x:contain;
+      scroll-snap-type:x mandatory; padding-bottom:8px;
+    }
+    .review{scroll-snap-align:start;}
+  }
+
   /* ---------- FULL CIRCLE ---------- */
   .circle-head{max-width:760px;}
   .circle-head .lede{margin-top:18px;}
@@ -434,8 +477,9 @@
   /* --- Model worden: het aanbod --------------------------------- */
   .model-deal{
     display:grid; grid-template-columns:1fr 1fr; gap:26px 36px;
-    margin:30px 0 22px; padding:24px 0 4px;
-    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    margin:30px 0 26px; padding:26px 28px 8px;
+    background:rgba(var(--text-rgb),0.07);
+    border:1px solid rgba(var(--text-rgb),0.10);
   }
   .model-deal h4{
     font-family:var(--label); font-size:11px; letter-spacing:0.14em;
@@ -710,6 +754,42 @@
     <div>
       <figure class="shot shot-hero"><img src="images/medisch-centrum-voorste-stroom.jpg" alt="Medisch Centrum De Voorste Stroom in Oisterwijk, waar MHP Centrum gevestigd is" loading="eager" width="525" height="356"></figure>
     </div>
+  </div>
+</section>
+
+
+<section id="reviews" class="reviews-band">
+  <div class="wrap">
+    <div class="reviews-head">
+      <p class="eyebrow">Wat cli&euml;nten zeggen</p>
+      <a class="reviews-all" href="https://www.google.com/search?q=MHP+Centrum+Nederland&amp;stick=H4sIAAAAAAAA_-NgU1I1qDAxTzZLTUozNjFMNEpKMkqzMqgwMkk1TrE0NExNSTK0SDI1X8Qq6usRoOCcmldSVJqr4JeaklqUk5iXAgAISjT1QQAAAA&amp;hl=nl"
+         target="_blank" rel="noopener noreferrer">Alle 13 beoordelingen op Google &rarr;</a>
+    </div>
+
+    <ul class="reviews-grid">
+      <li class="review">
+        <p class="review-stars" role="img" aria-label="5 van de 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote>Bij binnenkomst denk je al: wat een fijne plek om te zijn. Daarnaast krijg je goede
+          uitleg over de behandeling en word je echt even in de watten gelegd! :)</blockquote>
+        <p class="review-by">Kim van der H. <span>&middot; oktober 2026</span></p>
+      </li>
+      <li class="review">
+        <p class="review-stars" role="img" aria-label="5 van de 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote>Vandaag mijn eerste sessie gehad voor het laseren van mijn tattoo. Ik werd vriendelijk
+          ontvangen en kreeg een duidelijke en professionele uitleg over de behandeling.</blockquote>
+        <p class="review-by">Oumaima van den B. <span>&middot; oktober 2026</span></p>
+      </li>
+      <li class="review">
+        <p class="review-stars" role="img" aria-label="5 van de 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote>Super blij met mijn mooie wenkbrauwen! Vriendelijk en deskundig!</blockquote>
+        <p class="review-by">Esmee S. <span>&middot; oktober 2026</span></p>
+      </li>
+      <li class="review">
+        <p class="review-stars" role="img" aria-label="5 van de 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote>Wat een heerlijke behandeling en erg professioneel. En een hele vriendelijke, fijne man</blockquote>
+        <p class="review-by">Lucie van den A. <span>&middot; oktober 2026</span></p>
+      </li>
+    </ul>
   </div>
 </section>
 
