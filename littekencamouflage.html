@@ -43,7 +43,7 @@
     --ink:var(--ground); --charcoal:var(--band); --panel:var(--surface);
     --gold:var(--accent); --gold-bright:var(--accent-bright); --cream:var(--text);
     --stone:var(--text-soft); --stone-dim:var(--text-soft); --line:rgba(26,29,24,0.24);
-    --serif:'Fraunces', serif; --label:'Oswald', sans-serif; --body:'Inter', sans-serif;
+    --star:#c98a14; --serif:'Fraunces', serif; --label:'Oswald', sans-serif; --body:'Inter', sans-serif;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{background:#b1b1a5;}
@@ -66,6 +66,13 @@
   p strong, strong{color:var(--cream); font-weight:500;}
   ul, ol{margin:0 0 20px 22px; color:var(--stone);}
   li{margin-bottom:8px;}
+  /* ---------- REVIEW ---------- */
+  .lc-rev{margin:52px 0 0; background:rgba(242,242,236,0.88); border:1px solid rgba(26,29,24,0.12); padding:26px 28px 24px;}
+  .lc-rev .sterren{color:var(--star); font-size:15px; letter-spacing:0.2em; line-height:1; margin:0 0 13px;}
+  .lc-rev blockquote{margin:0 0 16px; font-size:16px; line-height:1.7; color:var(--stone);}
+  .lc-rev .wie{margin:0; font-family:var(--label); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--cream);}
+  .lc-rev .wie span{color:var(--stone-dim);}
+  .lc-rev .alle{display:inline-block; margin-top:14px; font-family:var(--label); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(var(--accent-rgb),0.38); padding-bottom:3px;}
   .cta-box{margin:56px 0; padding:36px; border:1px solid var(--line); background:var(--panel); text-align:center;}
   .cta-box h3{margin-top:0; font-size:22px;}
   .cta-box p{max-width:480px; margin-left:auto; margin-right:auto;}
@@ -174,6 +181,13 @@
 
   <h2>Wat is het verwachte resultaat?</h2>
   <p>Het doel is niet om het litteken volledig te laten verdwijnen, maar om het optisch te laten samensmelten met de omgeving — waardoor het bij normale afstand en belichting nauwelijks nog opvalt, ook bij kort geknipt haar. Net als bij SMP wordt het resultaat opgebouwd in meerdere sessies voor een natuurlijk en duurzaam effect.</p>
+
+  <div class="lc-rev">
+    <p class="sterren" role="img" aria-label="5 van de 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+    <blockquote>Ik vond het best een beetje spannend om voor een littekencamouflage behandeling te gaan. Uiteindelijk zeer tevreden met het resultaat. Niet alleen professioneel geholpen, maar ook goed ontvangen op de praktijk en al mijn twijfels waren weggenomen voor de behandeling. Een aanrader!</blockquote>
+    <p class="wie">Max K. <span>&middot; oktober 2026</span></p>
+    <a class="alle" href="https://maps.app.goo.gl/S1JwJFams4auNsGG7" target="_blank" rel="noopener noreferrer">Alle beoordelingen op Google &rarr;</a>
+  </div>
 
   <div class="cta-box">
     <h3>Heeft u een litteken na een haartransplantatie?</h3>
