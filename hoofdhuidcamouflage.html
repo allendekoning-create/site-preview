@@ -79,6 +79,12 @@
     table.keuze td::before{content:attr(data-kol); display:block; font-family:var(--label); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:3px;}
   }
   .keuze-hint{font-size:13px; color:var(--stone-dim); margin:4px 0 0;}
+  .paar{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:34px 0 10px;}
+  .paar figure{margin:0; border:1px solid var(--line); background:rgba(242,242,236,0.35); padding:12px 12px 10px;}
+  .paar img{width:100%; height:auto; display:block;}
+  .paar figcaption{margin-top:10px; font-size:13px; line-height:1.55; color:var(--stone-dim);}
+  .paar-label{display:block; font-family:var(--label); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:3px;}
+  @media (max-width:620px){ .paar{grid-template-columns:1fr;} }
   .voor-na{margin:34px 0 10px; border:1px solid var(--line); background:rgba(242,242,236,0.35); padding:14px 14px 10px;}
   .voor-na img{width:100%; height:auto; display:block;}
   .voor-na figcaption{margin-top:11px; font-size:13px; line-height:1.55; color:var(--stone-dim);}
@@ -240,10 +246,16 @@
   <p><strong>&euro;&nbsp;150 per zone per sessie.</strong> Meestal zijn twee sessies nodig, dus reken op ongeveer <strong>&euro;&nbsp;300 per zone</strong>. Heeft u aan &eacute;&eacute;n sessie genoeg, dan betaalt u ook maar &eacute;&eacute;n. Welke zones nodig zijn bepalen we tijdens het gratis consult; de zone-indeling staat met een tekening op de <a href="tarieven.html">tarievenpagina</a>.</p>
 
   <h2>Resultaat</h2>
-  <figure class="voor-na">
-    <img src="images/shading-resultaat.jpg" alt="Cli&euml;nt na hoofdhuidcamouflage: het haar oogt vol en de hoofdhuid schijnt niet meer door" loading="lazy">
-    <figcaption>Dezelfde cli&euml;nt na de behandeling. Het haar is niet veranderd en er is niets geschoren &mdash; alleen het contrast met de hoofdhuid is weg.</figcaption>
-  </figure>
+  <div class="paar">
+    <figure>
+      <img src="images/shading-voor.jpg" alt="De kruin voor de behandeling: de hoofdhuid schijnt duidelijk door het haar heen" loading="lazy">
+      <figcaption><span class="paar-label">Voor</span> De kruin, met duidelijk zichtbare hoofdhuid.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/shading-resultaat.jpg" alt="Dezelfde cli&euml;nt na hoofdhuidcamouflage: het haar oogt vol en de hoofdhuid schijnt niet meer door" loading="lazy">
+      <figcaption><span class="paar-label">Na</span> Dezelfde cli&euml;nt na afloop. Niets geschoren, niets aan het haar veranderd.</figcaption>
+    </figure>
+  </div>
 
   <div class="smp-model">
     <h3>Model worden: 50% korting</h3>
