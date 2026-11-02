@@ -97,6 +97,19 @@
     font-family:var(--label); font-size:12px; color:var(--gold); min-width:18px;
     border-bottom:1px solid rgba(var(--accent-rgb),0.35); text-align:center;
   }
+  /* De zone-indeling is voor beide hoofdhuidbehandelingen dezelfde, het bedrag
+     per zone niet. Als doorlopende vetgedrukte zin las dat slecht: twee namen
+     en twee bedragen door elkaar. Nu staat elk tarief onder zijn eigen kop. */
+  .zone-prijs{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:24px 0 22px;}
+  .zone-prijs > div{padding:18px 20px 16px; background:rgba(242,242,236,0.42); border:1px solid var(--line);}
+  .zone-prijs dt{
+    font-family:var(--label); font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:8px;
+  }
+  .zone-prijs dd{margin:0;}
+  .zone-prijs-bedrag{font-family:var(--serif); font-size:20px; color:var(--cream); line-height:1.25;}
+  .zone-prijs-noot{margin-top:7px; font-size:14px; line-height:1.6; color:var(--stone-dim);}
+  @media (max-width:560px){ .zone-prijs{grid-template-columns:1fr;} }
 
   /* ---------- TARIEVEN ---------- */
   .tarieven{margin:40px 0 16px; border-top:1px solid var(--line);}
@@ -283,11 +296,23 @@
 
 
   <h2 id="zones">De zeven zones</h2>
-  <p>Een hoofdhuid behandelen we per zone. Dezelfde indeling geldt voor beide
-     hoofdhuidbehandelingen, maar <strong>wat een zone kost verschilt per behandeling:
-     &euro;&nbsp;600 voor scalp micropigmentatie, &euro;&nbsp;150 per sessie voor
-     hoofdhuidcamouflage</strong> (meestal twee sessies, dus ongeveer &euro;&nbsp;300 per zone).
-     Alleen een haarlijn aanzetten is dus een ander traject dan voorhoofd, bovenkant en
+  <p>Een hoofdhuid behandelen we per zone. De indeling hieronder geldt voor beide
+     hoofdhuidbehandelingen &mdash; <strong>alleen het bedrag per zone verschilt.</strong></p>
+
+  <dl class="zone-prijs">
+    <div>
+      <dt>Scalp micropigmentatie</dt>
+      <dd class="zone-prijs-bedrag">&euro;&nbsp;600 per zone</dd>
+      <dd class="zone-prijs-noot">Het bedrag geldt voor de hele zone, ook als we die over meerdere sessies opbouwen.</dd>
+    </div>
+    <div>
+      <dt>Hoofdhuidcamouflage</dt>
+      <dd class="zone-prijs-bedrag">&euro;&nbsp;150 per zone, per sessie</dd>
+      <dd class="zone-prijs-noot">Meestal twee sessies, dus ongeveer &euro;&nbsp;300 per zone. E&eacute;n sessie genoeg? Dan betaalt u er ook maar &eacute;&eacute;n.</dd>
+    </div>
+  </dl>
+
+  <p>Alleen een haarlijn aanzetten is dus een ander traject dan voorhoofd, bovenkant en
      kruin samen. Tijdens de intake tekenen we samen op welke zones nodig zijn, en
      daarmee staat de prijs vast voordat we beginnen.</p>
 
