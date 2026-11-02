@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#b1b1a5">
+
+<!-- Advertentielandingspagina. Staat bewust NIET in de navigatie en NIET in
+     sitemap.xml, en is op noindex gezet: hij mag in Google niet concurreren
+     met hoofdhuidcamouflage.html, die wel voor organisch zoeken bedoeld is.
+     Verkeer komt hier uitsluitend via een betaalde advertentie binnen.
+     Elke call-to-action is een wa.me-link; js/mhp.js vangt die af en meldt
+     hem als conversie bij Google Ads en Meta. Niet vervangen door een
+     formulier zonder dat ook daar conversiemeting onder te zetten. -->
+<meta name="robots" content="noindex, follow">
+
+<title>Haarverdichting zonder scheren &mdash; hoofdhuidcamouflage in Oisterwijk | MHP Centrum</title>
+<meta name="description" content="Schijnt uw hoofdhuid door uw haar heen? Hoofdhuidcamouflage neemt het contrast weg, zonder scheren en zonder uw kapsel te veranderen. Gratis consult in Oisterwijk.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Oswald:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ground:#b1b1a5; --band:#a0a194; --surface:#f2f2ec;
+    --accent:#56400f; --accent-bright:#7a5c20;
+    --text:#1a1d18; --text-soft:#3a3e35;
+    --ink:var(--ground); --charcoal:var(--band); --panel:var(--surface);
+    --gold:var(--accent); --gold-bright:var(--accent-bright); --cream:var(--text);
+    --stone:var(--text-soft); --stone-dim:var(--text-soft); --line:rgba(26,29,24,0.24);
+    --serif:'Fraunces', serif; --label:'Oswald', sans-serif; --body:'Inter', sans-serif;
+    --wa:#1f8a4c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{background:#b1b1a5; scroll-behavior:smooth;}
+  body{background:var(--ink); color:var(--cream); font-family:var(--body); font-weight:300;
+       font-size:17px; line-height:1.75; color-scheme:light;}
+  a{color:var(--gold);}
+  /* height:auto is nodig omdat elke <img> hier een height-attribuut heeft (dat
+     reserveert de ruimte en voorkomt dat de pagina tijdens het laden verspringt).
+     Zonder deze regel wint dat attribuut van aspect-ratio en wordt de foto
+     1200px hoog. */
+  img{max-width:100%; height:auto; display:block;}
+
+  .wrap{max-width:1080px; margin:0 auto; padding:0 6vw;}
+  .narrow{max-width:760px;}
+  section{padding:64px 0;}
+  section + section{border-top:1px solid var(--line);}
+
+  /* ---------- KOP ---------- */
+  header{display:flex; align-items:center; gap:14px; padding:18px 6vw; border-bottom:1px solid var(--line);}
+  header .brand-text{font-family:var(--label); font-size:14px; letter-spacing:0.16em;
+                     color:var(--cream); text-decoration:none;}
+  header .plaats{margin-left:auto; font-family:var(--label); font-size:11px; letter-spacing:0.12em;
+                 text-transform:uppercase; color:var(--stone-dim);}
+
+  /* ---------- TYPOGRAFIE ---------- */
+  .eyebrow{font-family:var(--label); font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+           color:var(--gold); margin-bottom:14px;}
+  h1{font-family:var(--serif); font-weight:500; font-size:clamp(30px,5vw,46px); line-height:1.12;
+     margin-bottom:18px;}
+  h2{font-family:var(--serif); font-weight:500; font-size:clamp(23px,3.2vw,29px); color:var(--gold-bright);
+     margin-bottom:16px; line-height:1.25;}
+  h3{font-family:var(--serif); font-weight:500; font-size:19px; color:var(--cream); margin-bottom:8px;}
+  p{margin-bottom:16px; color:var(--stone);}
+  p:last-child{margin-bottom:0;}
+  strong{color:var(--cream); font-weight:500;}
+  .lead{font-size:19px; line-height:1.7;}
+
+  /* ---------- KNOPPEN ---------- */
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px;
+       padding:17px 32px; font-family:var(--label); font-size:13px; font-weight:500;
+       letter-spacing:0.09em; text-transform:uppercase; text-decoration:none;
+       border:1px solid transparent; transition:background .2s ease, border-color .2s ease;}
+  .btn svg{width:19px; height:19px; flex:none;}
+  .btn-wa{background:var(--wa); color:#fff;}
+  .btn-wa:hover{background:#176b3a;}
+  .btn-line{background:none; color:var(--cream); border-color:var(--line);}
+  .btn-line:hover{border-color:var(--gold);}
+  .btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+  .btn-rij{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:26px;}
+  .onder-knop{margin-top:14px; font-size:14px; color:var(--stone-dim);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:56px 0 64px;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:clamp(28px,5vw,60px); align-items:center;}
+  .hero-foto{border:1px solid var(--line); overflow:hidden; background:var(--panel);}
+  .hero-foto img{width:100%; aspect-ratio:4/5; object-fit:cover;}
+
+  .vertrouwen{display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:32px; padding-top:24px;
+              border-top:1px solid var(--line);}
+  .vertrouwen li{list-style:none; font-family:var(--label); font-size:11px; letter-spacing:0.09em;
+                 text-transform:uppercase; color:var(--stone-dim); display:flex; align-items:center; gap:8px;}
+  .vertrouwen li::before{content:''; width:5px; height:5px; background:var(--gold); flex:none;}
+
+  /* ---------- VOOR / NA ---------- */
+  .paar{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:12px 0 0;}
+  .paar figure{margin:0; border:1px solid var(--line); background:rgba(242,242,236,0.4); padding:12px;}
+  .paar img{width:100%; aspect-ratio:1/1; object-fit:cover;}
+  .paar-label{display:block; font-family:var(--label); font-size:11px; letter-spacing:0.14em;
+              text-transform:uppercase; color:var(--gold); margin:11px 0 3px;}
+  .paar figcaption{font-size:14px; line-height:1.55; color:var(--stone-dim);}
+  .enkel{margin:12px 0 0; border:1px solid var(--line); background:rgba(242,242,236,0.4); padding:14px;}
+  .enkel figcaption{margin-top:11px; font-size:14px; line-height:1.55; color:var(--stone-dim);}
+  /* Staande foto's mogen de kolom niet overheersen: op volle breedte wordt
+     een 4:5 opname bijna een hele schermhoogte en duwt hij de knop weg. */
+  .enkel.staand{max-width:420px; margin-left:auto; margin-right:auto;}
+  .enkel.compact{max-width:540px; margin-left:auto; margin-right:auto;}
+  .foto-noot{margin-top:18px; font-size:13px; color:var(--stone-dim);}
+
+  /* ---------- WEL / NIET ---------- */
+  .welniet{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:8px;}
+  .welniet > div{padding:24px 26px; border:1px solid var(--line); background:var(--panel);}
+  .welniet h3{font-family:var(--label); font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
+              margin-bottom:14px;}
+  .welniet .wel h3{color:var(--gold);}
+  .welniet .niet h3{color:var(--stone-dim);}
+  .welniet ul{margin:0; padding:0; list-style:none;}
+  .welniet li{position:relative; padding-left:20px; margin-bottom:9px; color:var(--stone); font-size:16px;
+              line-height:1.6;}
+  .welniet li:last-child{margin-bottom:0;}
+  .welniet li::before{position:absolute; left:0; top:0; color:var(--gold);}
+  .welniet .wel li::before{content:'\2713';}
+  .welniet .niet li::before{content:'\2014'; color:var(--stone-dim);}
+
+  /* ---------- STAPPEN ---------- */
+  .stappen{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px 30px; margin-top:8px;}
+  .stap-num{font-family:var(--label); font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+            color:var(--gold); margin-bottom:8px;}
+  .stap p{font-size:16px;}
+
+  /* ---------- PRIJS ---------- */
+  .prijs{padding:30px 32px; border:1px solid var(--line); background:var(--panel); margin-top:8px;}
+  .prijs-groot{font-family:var(--serif); font-size:clamp(28px,4.5vw,38px); color:var(--gold-bright);
+               line-height:1.1; margin-bottom:6px;}
+  .prijs-sub{font-family:var(--label); font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
+             color:var(--stone-dim); margin-bottom:18px;}
+
+  /* ---------- MODEL ---------- */
+  .model{margin-top:30px; padding:28px 30px; background:var(--charcoal); border:1px solid var(--line);}
+  .model h3{color:var(--gold-bright); font-size:20px;}
+  .model ul{margin:14px 0 0 20px; color:var(--stone);}
+  .model li{margin-bottom:7px; font-size:16px;}
+
+  /* ---------- VRAGEN ---------- */
+  .vragen{margin-top:8px; border-top:1px solid var(--line);}
+  .vragen details{border-bottom:1px solid var(--line);}
+  .vragen summary{padding:18px 34px 18px 0; cursor:pointer; position:relative; list-style:none;
+                  font-family:var(--serif); font-size:18px; color:var(--cream);}
+  .vragen summary::-webkit-details-marker{display:none;}
+  .vragen summary::after{content:''; position:absolute; right:6px; top:50%; width:9px; height:9px;
+                         border-right:1.5px solid var(--gold); border-bottom:1.5px solid var(--gold);
+                         transform:translateY(-70%) rotate(45deg); transition:transform .2s ease;}
+  .vragen details[open] summary::after{transform:translateY(-30%) rotate(-135deg);}
+  .vragen summary:focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
+  .vragen .antwoord{padding:0 0 20px;}
+  .vragen .antwoord p{font-size:16px;}
+
+  /* ---------- OVER ---------- */
+  .over{display:grid; grid-template-columns:200px 1fr; gap:30px; align-items:start;}
+  .over img{border:1px solid var(--line); aspect-ratio:1/1; object-fit:cover; width:100%;}
+
+  /* ---------- SLOT-CTA ---------- */
+  .slot{background:var(--panel); border:1px solid var(--line); padding:clamp(32px,5vw,52px); text-align:center;}
+  .slot h2{margin-bottom:14px;}
+  .slot p{max-width:52ch; margin-left:auto; margin-right:auto;}
+  .slot .btn-rij{justify-content:center;}
+  .gegevens{display:flex; flex-wrap:wrap; justify-content:center; gap:10px 34px; margin-top:34px;
+            padding-top:26px; border-top:1px solid var(--line); font-size:15px; color:var(--stone);}
+  .gegevens b{display:block; font-family:var(--label); font-size:10px; letter-spacing:0.12em;
+              text-transform:uppercase; color:var(--stone-dim); font-weight:400;}
+
+  /* ---------- GIDSLINK ---------- */
+  .gids{display:block; margin-top:30px; padding:22px 26px; border:1px solid var(--line);
+        text-decoration:none; background:rgba(242,242,236,0.4);}
+  .gids:hover{border-color:var(--gold);}
+  .gids .gids-kop{font-family:var(--serif); font-size:18px; color:var(--cream); margin-bottom:4px;}
+  .gids .gids-sub{font-size:15px; color:var(--stone-dim);}
+  .gids .gids-pijl{font-family:var(--label); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+                   color:var(--gold); margin-top:10px; display:block;}
+
+  /* ---------- VOET ---------- */
+  footer{border-top:1px solid var(--line); padding:34px 6vw 108px; text-align:center;
+         color:var(--stone-dim); font-size:12px; font-family:var(--label); letter-spacing:0.06em;}
+  footer a{color:var(--stone-dim); margin:0 8px; text-decoration:none;}
+  footer a:hover{color:var(--gold);}
+
+  /* ---------- VASTE CTA-BALK (mobiel) ---------- */
+  .balk{position:fixed; left:0; right:0; bottom:0; z-index:90; display:none;
+        padding:10px max(12px,env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-right));
+        background:rgba(177,177,165,0.97); backdrop-filter:blur(10px); border-top:1px solid var(--line);}
+  .balk .btn{width:100%; padding:15px 20px;}
+
+  /* ---------- ZWEVENDE WHATSAPP (desktop) ---------- */
+  .whatsapp-float{position:fixed; bottom:26px; right:26px; z-index:90; width:58px; height:58px;
+                  border-radius:50%; background:#25D366; display:flex; align-items:center;
+                  justify-content:center; box-shadow:0 6px 20px rgba(0,0,0,0.3);
+                  transition:transform .25s ease;}
+  .whatsapp-float:hover{transform:scale(1.08);}
+  .whatsapp-float svg{width:30px; height:30px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-foto{order:-1;}
+    .hero-foto img{aspect-ratio:4/3;}
+    .over{grid-template-columns:1fr;}
+    .over img{max-width:200px;}
+  }
+  @media (max-width:760px){
+    body{font-size:16px;}
+    section{padding:50px 0;}
+    .balk{display:block;}
+    .whatsapp-float{display:none;}
+    footer{padding-bottom:108px;}
+    .prijs{padding:24px 22px;}
+    .model{padding:24px 22px;}
+    .slot{padding:30px 22px;}
+    .btn-rij .btn{width:100%;}
+  }
+  @media (max-width:520px){
+    .paar{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="brand-text">MHP CENTRUM</span>
+  <span class="plaats">Oisterwijk &middot; Alleen op afspraak</span>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Hoofdhuidcamouflage &middot; Scalp shading</p>
+        <h1>Uw hoofdhuid schijnt door. Uw haar hoeft er niet voor af.</h1>
+        <p class="lead">Bij dunner wordend haar valt zelden het haar zelf op &mdash; het is de lichte hoofdhuid die erdoorheen schijnt. Wij leggen de schaduw terug die vol haar op uw hoofdhuid werpt. U houdt uw eigen kapsel, er wordt niets geschoren.</p>
+
+        <div class="btn-rij">
+          <a class="btn btn-wa" href="https://wa.me/31621541038?text=Hallo%20Allen%2C%20ik%20kom%20via%20de%20advertentie%20en%20wil%20graag%20een%20afspraak%20maken%20voor%20hoofdhuidcamouflage.">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.86 9.86 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 8.23 8.24c0 4.54-3.7 8.24-8.23 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.86-.87 2.09s.9 2.43 1.02 2.59c.12.17 1.76 2.68 4.26 3.76.6.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+            Maak een afspraak via WhatsApp
+          </a>
+          <a class="btn btn-line" href="tel:+31621541038">Of bel 06 21 54 10 38</a>
+        </div>
+        <p class="onder-knop">Het consult is gratis en vrijblijvend. U hoort meteen of deze behandeling bij uw haar past.</p>
+
+        <ul class="vertrouwen">
+          <li>GGD-vergund</li>
+          <li>Niets scheren</li>
+          <li>Twee sessies</li>
+          <li>Vanaf &euro;&nbsp;150 per zone</li>
+        </ul>
+      </div>
+
+      <div class="hero-foto">
+        <img src="images/lp-shading-hero.jpg"
+             alt="Cli&euml;nte in profiel na hoofdhuidcamouflage: de aanzet en de scheiding ogen vol, de hoofdhuid schijnt er niet meer doorheen"
+             width="960" height="1200" fetchpriority="high" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BEWIJS ================= -->
+<section>
+  <div class="wrap narrow">
+    <h2>Dezelfde kruin, dezelfde dag</h2>
+    <p>Er is geen haar bijgekomen. Alleen het contrast tussen de hoofdhuid en het haar is weg.</p>
+
+    <div class="paar">
+      <figure>
+        <img src="images/lp-shading-voor.jpg"
+             alt="Kruin v&oacute;&oacute;r de behandeling: de lichte hoofdhuid schijnt duidelijk door het haar heen"
+             width="1000" height="1000" loading="lazy" decoding="async">
+        <span class="paar-label">Voor</span>
+        <figcaption>De hoofdhuid licht op tussen het haar. Dat lichtverschil is wat opvalt, niet het haar.</figcaption>
+      </figure>
+      <figure>
+        <img src="images/lp-shading-na.jpg"
+             alt="Dezelfde kruin na hoofdhuidcamouflage: de hoofdhuid heeft de toon van een schaduw en valt niet meer op"
+             width="1000" height="1000" loading="lazy" decoding="async">
+        <span class="paar-label">Na</span>
+        <figcaption>De hoofdhuid heeft de toon gekregen die vol haar erop zou werpen. Het haar zelf is onveranderd.</figcaption>
+      </figure>
+    </div>
+
+    <figure class="enkel compact" style="margin-top:20px;">
+      <img src="images/shading-voor-na.jpg"
+           alt="Kruin van een andere cli&euml;nte, links voor en rechts na hoofdhuidcamouflage"
+           width="1040" height="1040" loading="lazy" decoding="async">
+      <figcaption>Een andere cli&euml;nte, links voor en rechts na. Een bredere scheiding en een oplichtende kruin zijn de twee klachten die wij het vaakst zien.</figcaption>
+    </figure>
+
+    <figure class="enkel staand" style="margin-top:16px;">
+      <img src="images/lp-shading-resultaat.jpg"
+           alt="Dezelfde cli&euml;nte van achteren gezien na de behandeling: het haar oogt vol en gelijkmatig"
+           width="960" height="1200" loading="lazy" decoding="async">
+      <figcaption>Dezelfde cli&euml;nte, een paar minuten later. Niets geschoren, niets geknipt &mdash; alleen de hoofdhuid die niet meer oplicht.</figcaption>
+    </figure>
+
+    <p class="foto-noot">Alle foto&rsquo;s zijn van cli&euml;nten uit onze eigen praktijk in Oisterwijk, geplaatst met hun schriftelijke toestemming. Geen stockbeeld, geen bewerkte resultaten.</p>
+  </div>
+</section>
+
+<!-- ================= WAT HET IS ================= -->
+<section>
+  <div class="wrap narrow">
+    <h2>Wat hoofdhuidcamouflage wel en niet doet</h2>
+    <p>Met een fijne naald brengen wij een zacht veld pigment aan op de hoofdhuid, tussen uw eigen haar door. De hoofdhuid krijgt niet de kleur van uw haar, maar de <strong>schaduw die een volle haardos erop werpt</strong>. Juist die schaduw verdwijnt als het haar dunner wordt.</p>
+
+    <div class="welniet">
+      <div class="wel">
+        <h3>Wat het doet</h3>
+        <ul>
+          <li>Neemt het doorschijnen van de hoofdhuid weg</li>
+          <li>Maakt een breder geworden scheiding minder zichtbaar</li>
+          <li>Laat uw haar voller ogen, ook op foto&rsquo;s en onder fel licht</li>
+          <li>Werkt bij vrouwen en mannen, bij elke haarkleur</li>
+          <li>Kost twee sessies en u gaat er gewoon mee naar buiten</li>
+        </ul>
+      </div>
+      <div class="niet">
+        <h3>Wat het niet doet</h3>
+        <ul>
+          <li>Het laat geen haar groeien en is geen haargroeimiddel</li>
+          <li>Het is geen haartransplantatie en geen haarstuk</li>
+          <li>Er wordt niets geschoren en niets afgeknipt</li>
+          <li>Het stopt haaruitval niet &mdash; het verandert wat u ziet</li>
+          <li>Op een plek waar het haar hel&eacute;&eacute;maal weg is werkt het niet</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:22px;">Is het haar op een plek volledig verdwenen, dan is scalp micropigmentatie de betere keuze. Dat vertellen wij u eerlijk tijdens het consult, ook als het betekent dat deze behandeling niets voor u is.</p>
+
+    <a class="gids" href="hoofdhuidcamouflage.html">
+      <span class="gids-kop">De volledige behandelgids</span>
+      <span class="gids-sub">De techniek, het verschil met scalp micropigmentatie, de zone-indeling en de nazorg &mdash; uitgebreid uitgelegd op onze eigen site.</span>
+      <span class="gids-pijl">Lees de gids &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= HOE HET GAAT ================= -->
+<section>
+  <div class="wrap">
+    <h2>Hoe het gaat</h2>
+    <div class="stappen">
+      <div class="stap">
+        <p class="stap-num">01 &middot; Gratis consult</p>
+        <p>Wij kijken naar uw haar en hoofdhuid, bepalen samen de kleur en tekenen op welke zones wij behandelen. U hoort de prijs voordat er iets gebeurt.</p>
+      </div>
+      <div class="stap">
+        <p class="stap-num">02 &middot; Eerste sessie</p>
+        <p>Ongeveer twee uur. Wij bouwen de toon rustig op in lagen, zodat het resultaat nooit te donker wordt. U kunt daarna gewoon naar huis of naar het werk.</p>
+      </div>
+      <div class="stap">
+        <p class="stap-num">03 &middot; Tweede sessie</p>
+        <p>Na ongeveer vier weken maken wij de dichtheid af, nu zichtbaar is hoe de eerste laag is uitgehard. Heeft u aan &eacute;&eacute;n sessie genoeg, dan blijft het bij &eacute;&eacute;n.</p>
+      </div>
+    </div>
+
+    <figure class="enkel compact" style="margin-top:30px;">
+      <img src="images/lp-shading-proces.jpg"
+           alt="Vier opnamen van dezelfde behandeling: de hoofdhuid vooraf, het aanbrengen van het pigment en het resultaat"
+           width="1000" height="1000" loading="lazy" decoding="async">
+      <figcaption>Van het bepalen van de kleur tot het resultaat &mdash; dezelfde cli&euml;nte, dezelfde middag.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= PRIJS ================= -->
+<section>
+  <div class="wrap narrow">
+    <h2>Wat het kost</h2>
+    <div class="prijs">
+      <p class="prijs-groot">&euro;&nbsp;150 per zone, per sessie</p>
+      <p class="prijs-sub">Meestal twee sessies &middot; ongeveer &euro;&nbsp;300 per zone</p>
+      <p>Heeft u aan &eacute;&eacute;n sessie genoeg, dan betaalt u er ook maar &eacute;&eacute;n. Welke zones nodig zijn bepalen wij tijdens het gratis consult, en u hoort het volledige bedrag voordat wij beginnen. Geen nacalculatie en geen verrassingen achteraf.</p>
+    </div>
+
+    <div class="model">
+      <h3>Model worden: 50% korting</h3>
+      <p>Hoofdhuidcamouflage is nieuw in onze praktijk en wij bouwen er een portfolio mee op. Daarvoor zoeken wij een <strong>beperkt aantal modellen</strong>.</p>
+      <ul>
+        <li>50% korting op het volledige traject, niet alleen op de eerste sessie</li>
+        <li>Dezelfde specialist, pigmenten en apparatuur als iedere andere cli&euml;nt</li>
+        <li>Daar staat tegenover dat wij uw resultaat mogen fotograferen en laten zien, met u <strong>herkenbaar</strong> in beeld</li>
+      </ul>
+      <p style="margin-top:14px;">Niet iedere aanmelding komt in aanmerking. Dat beoordelen wij eerlijk tijdens het gratis consult. Noem het even in uw bericht als u hiervoor in aanmerking wilt komen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VRAGEN ================= -->
+<section>
+  <div class="wrap narrow">
+    <h2>Wat cli&euml;nten ons het vaakst vragen</h2>
+    <div class="vragen">
+      <details>
+        <summary>Doet het pijn?</summary>
+        <div class="antwoord"><p>De meeste cli&euml;nten omschrijven het als goed te doen: een licht krassend gevoel, vergelijkbaar met een stevige kam. De kruin is doorgaans gevoeliger dan de zijkanten. Wordt het onaangenaam, dan kunnen wij verdoven of een pauze inlassen &mdash; zeg het gerust tijdens de sessie.</p></div>
+      </details>
+      <details>
+        <summary>Ziet het er niet onnatuurlijk uit?</summary>
+        <div class="antwoord"><p>Dat is precies waarom wij in lagen werken en nooit in &eacute;&eacute;n keer op de einddichtheid gaan zitten. De toon wordt afgestemd op uw eigen haarkleur. De eerste dagen oogt het resultaat <strong>donkerder</strong> dan het wordt; tijdens het herstel zakt het terug naar het zachte schaduweffect dat wij hebben afgesproken. Beoordeel uw resultaat dus niet in de eerste week.</p></div>
+      </details>
+      <details>
+        <summary>Moet ik mijn haar laten scheren of knippen?</summary>
+        <div class="antwoord"><p>Nee. Wij werken tussen uw eigen haar door en u houdt uw kapsel precies zoals het is. Kom met schoon, droog haar zonder stylingproducten, dan kunnen wij de hoofdhuid goed zien.</p></div>
+      </details>
+      <details>
+        <summary>Kan ik mijn haar daarna nog verven?</summary>
+        <div class="antwoord"><p>Ja, maar wacht 30 dagen na uw laatste sessie: kleurproducten komen onvermijdelijk op de hoofdhuid terecht en kunnen vers pigment aantasten. Belangrijker nog: de toon wordt afgestemd op uw haar z&oacute;&aacute;ls het nu is. Wilt u naar een andere kleur, laat dat dan v&oacute;&oacute;r de behandeling weten of verf eerst &mdash; dan stemmen wij af op het haar dat u straks heeft.</p></div>
+      </details>
+      <details>
+        <summary>Hoe lang blijft het mooi?</summary>
+        <div class="antwoord"><p>Ongeveer twee jaar, waarna het rustig en gelijkmatig vervaagt. Dat is bewust zo: het pigment zit ondieper dan bij scalp micropigmentatie en is verdund, zodat het niet uitloopt en niet tot een vlek vervaagt. Uw haar verandert in twee jaar &mdash; er komt grijs bij, de dichtheid verschuift &mdash; en bij elke opfrissessie stemmen wij de toon opnieuw af op het haar dat u <em>dan</em> heeft.</p></div>
+      </details>
+      <details>
+        <summary>Werkt het ook bij grijs of heel licht haar?</summary>
+        <div class="antwoord"><p>Ja, de toon wordt per cli&euml;nt aangemaakt. Wel eerlijk: hoe lichter uw haar, hoe kleiner het contrast met uw hoofdhuid al is, en hoe subtieler de winst. Bij donker haar op een lichte hoofdhuid is het verschil het grootst. Tijdens het consult zeggen wij u wat u in uw geval mag verwachten.</p></div>
+      </details>
+      <details>
+        <summary>Kan ik er daarna gewoon mee naar buiten?</summary>
+        <div class="antwoord"><p>Ja. Uw hoofdhuid is de eerste dagen wat roze en het resultaat oogt donkerder dan het wordt. Houd uw hoofdhuid vier dagen droog &mdash; droogshampoo mag &mdash; en was uw haar vanaf dag vijf weer voorzichtig. Sporten en zwemmen komen later. U krijgt de volledige nazorg mee naar huis.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OVER ================= -->
+<section>
+  <div class="wrap narrow">
+    <h2>Wie het doet</h2>
+    <div class="over">
+      <img src="images/allen-portret.jpg" alt="Allen de Koning, MHP Specialist" width="400" height="400" loading="lazy" decoding="async">
+      <div>
+        <p><strong>Allen de Koning</strong> werkt in Oisterwijk vanuit een eigen behandelkamer in het Medisch Centrum Voorste Stroom. Micropigmentatie is geen bijzaak naast iets anders: het is het enige wat hier gebeurt.</p>
+        <p>De praktijk is <strong>GGD-vergund</strong> na inspectie ter plaatse op hygi&euml;ne en vakbekwaamheid &mdash; <a href="https://www.veiligtatoeerenenpiercen.nl/vind-hier-je-studio?atabase=eyJzZWFyY2giOiJNSFAgQ2VudHJ1bSBOZWRlcmxhbmQiLCJpdGVtIjoiYTJiNjk0MjctZTQ1ZS00ZmY2LWEzNzYtMGVhYTg1OGRhNjEyIn0=" target="_blank" rel="noopener">na te kijken in het landelijke RIVM-register</a>. U tekent vooraf een toestemmingsformulier en krijgt uw nazorginstructies schriftelijk mee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SLOT ================= -->
+<section>
+  <div class="wrap">
+    <div class="slot">
+      <h2>Zullen we eerst eens kijken?</h2>
+      <p>Stuur een bericht via WhatsApp met wat u stoort &mdash; een foto van uw kruin of scheiding mag, dat scheelt vaak een heen-en-weer. U krijgt meestal binnen een dag antwoord en wij plannen een gratis, vrijblijvend consult in.</p>
+      <div class="btn-rij">
+        <a class="btn btn-wa" href="https://wa.me/31621541038?text=Hallo%20Allen%2C%20ik%20kom%20via%20de%20advertentie%20en%20wil%20graag%20een%20afspraak%20maken%20voor%20hoofdhuidcamouflage.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.86 9.86 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 8.23 8.24c0 4.54-3.7 8.24-8.23 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.86-.87 2.09s.9 2.43 1.02 2.59c.12.17 1.76 2.68 4.26 3.76.6.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+          Afspraak maken via WhatsApp
+        </a>
+        <a class="btn btn-line" href="tel:+31621541038">Bel 06 21 54 10 38</a>
+      </div>
+
+      <div class="gegevens">
+        <div><b>Adres</b>Moergestelseweg 22&ndash;26<br>5062 JW Oisterwijk</div>
+        <div><b>Openingstijden</b>Alleen op afspraak</div>
+        <div><b>E-mail</b>info@mhpcentrum.nl</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 MHP Centrum Nederland &middot;
+  <a href="hoofdhuidcamouflage.html">Behandelgids hoofdhuidcamouflage</a>
+  <a href="privacyverklaring.html">Privacyverklaring</a>
+  <a href="algemene-voorwaarden.html">Algemene Voorwaarden</a>
+  <a href="#" data-mhp-reopen>Cookievoorkeur</a>
+</footer>
+
+<!-- Vaste balk op de telefoon: de knop blijft binnen duimbereik, hoe ver
+     iemand ook gescrold heeft. -->
+<div class="balk">
+  <a class="btn btn-wa" href="https://wa.me/31621541038?text=Hallo%20Allen%2C%20ik%20kom%20via%20de%20advertentie%20en%20wil%20graag%20een%20afspraak%20maken%20voor%20hoofdhuidcamouflage.">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.86 9.86 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 8.23 8.24c0 4.54-3.7 8.24-8.23 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.86-.87 2.09s.9 2.43 1.02 2.59c.12.17 1.76 2.68 4.26 3.76.6.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+    Afspraak maken via WhatsApp
+  </a>
+</div>
+
+<a href="https://wa.me/31621541038?text=Hallo%20Allen%2C%20ik%20kom%20via%20de%20advertentie%20en%20wil%20graag%20een%20afspraak%20maken%20voor%20hoofdhuidcamouflage."
+   target="_blank" rel="noopener" class="whatsapp-float" aria-label="Afspraak maken via WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true" focusable="false"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.86 9.86 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 8.23 8.24c0 4.54-3.7 8.24-8.23 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.86-.87 2.09s.9 2.43 1.02 2.59c.12.17 1.76 2.68 4.26 3.76.6.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+</a>
+
+<!-- mhp.js regelt de cookietoestemming en meldt elke klik op een wa.me- of
+     tel:-link als conversie bij Google Ads en Meta. Zonder dit bestand
+     meet de advertentie niets. -->
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+<script src="/js/mhp.js" defer></script>
+</body>
+</html>
