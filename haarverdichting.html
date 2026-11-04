@@ -86,8 +86,12 @@
   /* ---------- HERO ---------- */
   .hero{padding:56px 0 64px;}
   .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:clamp(28px,5vw,60px); align-items:center;}
-  .hero-foto{border:1px solid var(--line); overflow:hidden; background:var(--panel);}
+  /* De hero toont bewust het probleem, niet het resultaat. Het onderschrift
+     moet dat benoemen, anders leest de bezoeker de eerste foto als het
+     eindresultaat en haakt hij af voordat hij bij het bewijs is. */
+  .hero-foto{border:1px solid var(--line); background:var(--panel); margin:0;}
   .hero-foto img{width:100%; aspect-ratio:4/5; object-fit:cover;}
+  .hero-foto figcaption{padding:11px 15px 13px; font-size:13.5px; line-height:1.55; color:var(--stone-dim);}
 
   .vertrouwen{display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:32px; padding-top:24px;
               border-top:1px solid var(--line);}
@@ -234,8 +238,8 @@
     <div class="hero-grid">
       <div>
         <p class="eyebrow">Hoofdhuidcamouflage &middot; Scalp shading</p>
-        <h1>Uw hoofdhuid schijnt door. Uw haar hoeft er niet voor af.</h1>
-        <p class="lead">Bij dunner wordend haar valt zelden het haar zelf op &mdash; het is de lichte hoofdhuid die erdoorheen schijnt. Wij leggen de schaduw terug die vol haar op uw hoofdhuid werpt. U houdt uw eigen kapsel, er wordt niets geschoren.</p>
+        <h1>U ziet uw hoofdhuid in de spiegel. En u vraagt zich af wie het nog meer ziet.</h1>
+        <p class="lead">De scheiding die breder lijkt te worden. Het licht in een winkel of op een foto dat er dwars doorheen valt. Het schikken, en nog eens schikken, voordat u de deur uit gaat. Bij dunner wordend haar valt zelden het haar zelf op &mdash; het is de lichte hoofdhuid die erdoorheen schijnt. <strong>Dat contrast nemen wij weg</strong>, zonder te scheren en zonder dat uw kapsel verandert.</p>
 
         <div class="btn-rij">
           <a class="btn btn-wa" href="https://wa.me/31621541038?text=Hallo%20Allen%2C%20ik%20kom%20via%20de%20advertentie%20en%20wil%20graag%20een%20afspraak%20maken%20voor%20hoofdhuidcamouflage.">
@@ -254,11 +258,12 @@
         </ul>
       </div>
 
-      <div class="hero-foto">
+      <figure class="hero-foto">
         <img src="images/lp-shading-hero.jpg"
-             alt="Cli&euml;nte in profiel na hoofdhuidcamouflage: de aanzet en de scheiding ogen vol, de hoofdhuid schijnt er niet meer doorheen"
-             width="960" height="1200" fetchpriority="high" decoding="async">
-      </div>
+             alt="Kruin van een cli&euml;nte v&oacute;&oacute;r de behandeling: de lichte hoofdhuid schijnt duidelijk door het dunner wordende haar heen"
+             width="800" height="1000" fetchpriority="high" decoding="async">
+        <figcaption>Hier komen de meeste cli&euml;nten mee binnen. Dezelfde hoofdhuid ziet u verderop op deze pagina terug, na de behandeling.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -297,7 +302,14 @@
       <img src="images/lp-shading-resultaat.jpg"
            alt="Dezelfde cli&euml;nte van achteren gezien na de behandeling: het haar oogt vol en gelijkmatig"
            width="960" height="1200" loading="lazy" decoding="async">
-      <figcaption>Dezelfde cli&euml;nte, een paar minuten later. Niets geschoren, niets geknipt &mdash; alleen de hoofdhuid die niet meer oplicht.</figcaption>
+      <figcaption>Dezelfde cli&euml;nte, een paar uur later. Niets geschoren, niets geknipt &mdash; alleen de hoofdhuid die niet meer oplicht.</figcaption>
+    </figure>
+
+    <figure class="enkel staand" style="margin-top:16px;">
+      <img src="images/lp-shading-portret.jpg"
+           alt="Dezelfde cli&euml;nte in profiel: het haar oogt vol en er is geen pigment te zien"
+           width="880" height="1100" loading="lazy" decoding="async">
+      <figcaption>En zo ziet het eruit als ze de deur uitgaat. Geen zichtbaar pigment &mdash; alleen haar dat weer vol oogt.</figcaption>
     </figure>
 
     <p class="foto-noot">Alle foto&rsquo;s zijn van cli&euml;nten uit onze eigen praktijk in Oisterwijk, geplaatst met hun schriftelijke toestemming. Geen stockbeeld, geen bewerkte resultaten.</p>
