@@ -17,7 +17,7 @@
   // 1. Fill these in. Empty = that platform is not loaded at all.
   // -------------------------------------------------------------
   var CONFIG = {
-    ga4:       '',   // Google Analytics 4,   e.g. 'G-XXXXXXXXXX'
+    ga4:       'G-KPJP0F1Z7B',   // Google Analytics 4
     adsId:     'AW-18490080782',   // Google Ads
     adsLabel:  'huAyCIqxx6IdEI784PBE',   // Ads conversielabel (Offerte aanvragen)
     metaPixel: '979053561309307',  // Meta pixel
