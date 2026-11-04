@@ -31,7 +31,7 @@
     --gold:var(--accent); --gold-bright:var(--accent-bright); --cream:var(--text);
     --stone:var(--text-soft); --stone-dim:var(--text-soft); --line:rgba(26,29,24,0.24);
     --serif:'Fraunces', serif; --label:'Oswald', sans-serif; --body:'Inter', sans-serif;
-    --wa:#1f8a4c;
+    --wa:#1f8a4c; --star:#c98a14;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{background:#b1b1a5; scroll-behavior:smooth;}
@@ -155,6 +155,26 @@
   .vragen summary:focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
   .vragen .antwoord{padding:0 0 20px;}
   .vragen .antwoord p{font-size:16px;}
+
+  /* ---------- REVIEWS ----------
+     Echte Google-reviews, overgenomen van de homepage. Ze gaan over de
+     praktijk, niet over deze behandeling - die is te nieuw voor eigen
+     reviews. De kop zegt dat dus ook. Niets hier verzinnen of bijschaven:
+     onder de Omnibus-richtlijn moet een review herleidbaar zijn tot een
+     echte klant, en de link naar Google is het bewijs. */
+  .reviews{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:8px;}
+  .review{background:var(--panel); border:1px solid var(--line); padding:22px 22px 20px;
+          display:flex; flex-direction:column;}
+  .review-stars{margin:0 0 12px; color:var(--star); font-size:14px; letter-spacing:0.2em; line-height:1;}
+  .review blockquote{margin:0 0 16px; font-size:15px; line-height:1.65; color:var(--stone); flex:1;}
+  .review-by{margin:0; font-family:var(--label); font-size:11px; letter-spacing:0.1em;
+             text-transform:uppercase; color:var(--cream);}
+  .review-by span{color:var(--stone-dim);}
+  .reviews-link{display:inline-block; margin-top:20px; font-family:var(--label); font-size:11px;
+                letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);
+                text-decoration:none; border-bottom:1px solid rgba(201,138,20,0.45); padding-bottom:3px;}
+  .reviews-link:hover{border-bottom-color:var(--gold);}
+  @media (max-width:860px){ .reviews{grid-template-columns:1fr;} }
 
   /* ---------- OVER ---------- */
   .over{display:grid; grid-template-columns:200px 1fr; gap:30px; align-items:start;}
@@ -444,6 +464,34 @@
         <p>De praktijk is <strong>GGD-vergund</strong> na inspectie ter plaatse op hygi&euml;ne en vakbekwaamheid &mdash; <a href="https://www.veiligtatoeerenenpiercen.nl/vind-hier-je-studio?atabase=eyJzZWFyY2giOiJNSFAgQ2VudHJ1bSBOZWRlcmxhbmQiLCJpdGVtIjoiYTJiNjk0MjctZTQ1ZS00ZmY2LWEzNzYtMGVhYTg1OGRhNjEyIn0=" target="_blank" rel="noopener">na te kijken in het landelijke RIVM-register</a>. U tekent vooraf een toestemmingsformulier en krijgt uw nazorginstructies schriftelijk mee.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section>
+  <div class="wrap">
+    <h2>Wat cli&euml;nten over de praktijk zeggen</h2>
+    <p style="max-width:62ch;">Hoofdhuidcamouflage is nieuw in onze praktijk, dus hieronder staan reviews over de praktijk zelf en over andere behandelingen &mdash; niet over deze. Ze zijn ongewijzigd overgenomen van ons Google-profiel, waar u ze allemaal kunt nalezen.</p>
+
+    <ul class="reviews" style="list-style:none; padding:0;">
+      <li class="review">
+        <p class="review-stars" role="img" aria-label="5 van de 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote>Was heel fijn en professioneel. Ziet er supermooi uit en geeft meer zelfvertrouwen. Zeker een aanrader.</blockquote>
+        <p class="review-by">Carla D. <span>&middot; oktober 2026</span></p>
+      </li>
+      <li class="review">
+        <p class="review-stars" role="img" aria-label="5 van de 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote>Bij binnenkomst denk je al: wat een fijne plek om te zijn. Daarnaast krijg je goede uitleg over de behandeling en word je echt even in de watten gelegd! :)</blockquote>
+        <p class="review-by">Kim van der H. <span>&middot; oktober 2026</span></p>
+      </li>
+      <li class="review">
+        <p class="review-stars" role="img" aria-label="5 van de 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote>Wat een heerlijke behandeling en erg professioneel. En een hele vriendelijke, fijne man</blockquote>
+        <p class="review-by">Lucie van den A. <span>&middot; oktober 2026</span></p>
+      </li>
+    </ul>
+
+    <a class="reviews-link" href="https://maps.app.goo.gl/S1JwJFams4auNsGG7" target="_blank" rel="noopener noreferrer">Alle beoordelingen op Google &rarr;</a>
   </div>
 </section>
 
