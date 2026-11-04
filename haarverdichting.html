@@ -157,11 +157,13 @@
   .vragen .antwoord p{font-size:16px;}
 
   /* ---------- REVIEWS ----------
-     Echte Google-reviews, overgenomen van de homepage. Ze gaan over de
-     praktijk, niet over deze behandeling - die is te nieuw voor eigen
-     reviews. De kop zegt dat dus ook. Niets hier verzinnen of bijschaven:
-     onder de Omnibus-richtlijn moet een review herleidbaar zijn tot een
-     echte klant, en de link naar Google is het bewijs. */
+     Echte Google-reviews, ongewijzigd overgenomen van de homepage, en
+     gekozen omdat ze over de praktijk en de behandelaar gaan - geen van
+     drieen noemt een specifieke behandeling, dus de kop "Wat clienten
+     zeggen" klopt gewoon. Niets hier verzinnen of bijschaven: onder de
+     Omnibus-richtlijn moet een review van een echte klant komen, en de
+     link naar het Google-profiel is wat dat aantoonbaar maakt. Die link
+     blijft dus staan. */
   .reviews{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:8px;}
   .review{background:var(--panel); border:1px solid var(--line); padding:22px 22px 20px;
           display:flex; flex-direction:column;}
@@ -470,8 +472,7 @@
 <!-- ================= REVIEWS ================= -->
 <section>
   <div class="wrap">
-    <h2>Wat cli&euml;nten over de praktijk zeggen</h2>
-    <p style="max-width:62ch;">Hoofdhuidcamouflage is nieuw in onze praktijk, dus hieronder staan reviews over de praktijk zelf en over andere behandelingen &mdash; niet over deze. Ze zijn ongewijzigd overgenomen van ons Google-profiel, waar u ze allemaal kunt nalezen.</p>
+    <h2>Wat cli&euml;nten zeggen</h2>
 
     <ul class="reviews" style="list-style:none; padding:0;">
       <li class="review">
