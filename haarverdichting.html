@@ -171,6 +171,15 @@
      Omnibus-richtlijn moet een review van een echte klant komen, en de
      link naar het Google-profiel is wat dat aantoonbaar maakt. Die link
      blijft dus staan. */
+  /* De eerste review die echt over deze behandeling gaat, krijgt zijn eigen
+     blok. Hij is ook veel langer dan de andere drie; in de kolommenrij zou
+     hij de korte kaarten uitrekken met witruimte. */
+  .review-uitgelicht{background:var(--panel); border:1px solid var(--line);
+                     padding:28px 30px 24px; margin:8px 0 16px;}
+  .review-uitgelicht blockquote{margin:14px 0 16px; font-family:var(--serif);
+                                font-size:19px; line-height:1.6; color:var(--cream);}
+  @media (max-width:560px){ .review-uitgelicht{padding:24px 22px 20px;}
+                            .review-uitgelicht blockquote{font-size:17px;} }
   .reviews{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:8px;}
   .review{background:var(--panel); border:1px solid var(--line); padding:22px 22px 20px;
           display:flex; flex-direction:column;}
@@ -485,6 +494,12 @@
 <section>
   <div class="wrap">
     <h2>Wat cli&euml;nten zeggen</h2>
+
+    <div class="review-uitgelicht">
+      <p class="review-stars" role="img" aria-label="5 van de 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+      <blockquote>Mijn ervaring met MHP Centrum is super! Ik heb mijn hoofdhuid voor de eerste keer laten pigmenteren en ben ontzettend blij met het resultaat. Het verschil is echt mooi zichtbaar. Er werd zorgvuldig gewerkt en er was veel aandacht voor een natuurlijk resultaat. Ik ben nu al heel tevreden en kijk uit naar het vervolg. Absoluut een aanrader voor iedereen die twijfelt! Dank je wel</blockquote>
+      <p class="review-by">Mark B. <span>&middot; november 2026</span></p>
+    </div>
 
     <ul class="reviews" style="list-style:none; padding:0;">
       <li class="review">
