@@ -242,8 +242,11 @@
     .hero-grid{grid-template-columns:1fr;}
     .hero-foto{order:-1;}
     /* Platter dan op desktop: op een telefoon moet naast de foto ook de kop
-       en het begin van de tekst binnen het eerste scherm passen. */
-    .hero-foto img{aspect-ratio:3/2;}
+       en het begin van de tekst binnen het eerste scherm passen. Maar niet
+       te plat: bij 3/2 viel 47% van de foto weg, en omdat de hoofdhuid in
+       het bovenste derde van het beeld zit sneed dat juist het onderwerp
+       eraf. 5/4 met het zwaartepunt hoog houdt de kruin in beeld. */
+    .hero-foto img{aspect-ratio:5/4; object-position:50% 18%;}
     h1{font-size:clamp(27px,6.4vw,46px);}
     .over{grid-template-columns:1fr;}
     .over img{max-width:200px;}
