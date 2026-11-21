@@ -19,7 +19,8 @@
   "blogPost": [
     {"@type": "BlogPosting", "headline": "SMP of Haartransplantatie? De Verschillen op een Rij", "url": "https://mhpcentrum.nl/blog-smp-vs-haartransplantatie.html", "datePublished": "2026-08-20"},
     {"@type": "BlogPosting", "headline": "Nazorg na Scalp Micropigmentatie: De Eerste 4 Weken", "url": "https://mhpcentrum.nl/blog-nazorg-na-smp.html", "datePublished": "2026-08-25"},
-    {"@type": "BlogPosting", "headline": "Doet laser tattoo verwijderen pijn?", "url": "https://mhpcentrum.nl/blog-pijn-bij-tattoo-verwijderen.html", "datePublished": "2026-11-21"}
+    {"@type": "BlogPosting", "headline": "Doet laser tattoo verwijderen pijn?", "url": "https://mhpcentrum.nl/blog-pijn-bij-tattoo-verwijderen.html", "datePublished": "2026-11-21"},
+    {"@type": "BlogPosting", "headline": "Wat kost een haar tattoo?", "url": "https://mhpcentrum.nl/blog-wat-kost-een-haar-tattoo.html", "datePublished": "2026-11-21"}
   ]
 }
 </script>
@@ -54,13 +55,22 @@
   .eyebrow{font-family:var(--label); font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:14px;}
   h1{font-family:var(--serif); font-weight:500; font-size:clamp(28px,4vw,40px); margin-bottom:16px; line-height:1.15;}
   .lede{color:var(--stone); font-size:18px; max-width:600px; margin-bottom:50px;}
-  .post{display:block; padding:28px 0; border-top:1px solid var(--line); text-decoration:none;}
+  .post{display:grid; grid-template-columns:168px 1fr; gap:28px; align-items:start;
+        padding:30px 0; border-top:1px solid var(--line); text-decoration:none;}
   .post:last-of-type{border-bottom:1px solid var(--line);}
+  .post-thumb{aspect-ratio:1/1; overflow:hidden; border:1px solid var(--line); background:var(--band);}
+  .post-thumb img{width:100%; height:100%; object-fit:cover; display:block;
+                  transition:transform .6s cubic-bezier(.2,.7,.3,1);}
+  .post:hover .post-thumb img{transform:scale(1.05);}
   .post .tag{display:inline-block; font-family:var(--label); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); border:1px solid var(--line); padding:4px 10px; margin-bottom:12px;}
-  .post h2{font-family:var(--serif); font-weight:500; font-size:22px; color:var(--cream); margin-bottom:8px;}
+  .post h2{font-family:var(--serif); font-weight:500; font-size:22px; color:var(--cream); margin-bottom:8px; line-height:1.25;}
   .post:hover h2{color:var(--gold-bright);}
   .post p{color:var(--stone); font-size:15px; margin-bottom:8px;}
   .post .date{font-family:var(--label); font-size:12px; letter-spacing:0.05em; color:var(--stone-dim);}
+  @media (max-width:620px){
+    .post{grid-template-columns:1fr; gap:18px; padding:26px 0;}
+    .post-thumb{aspect-ratio:16/9;}
+  }
   footer{border-top:1px solid var(--line); padding:40px 6vw; text-align:center; color:var(--stone-dim); font-size:12px; font-family:var(--label); letter-spacing:0.06em;}
   .sociaal{display:inline-flex; align-items:center; gap:6px; vertical-align:middle;}
   .sociaal svg{width:15px; height:15px; display:block;}
@@ -144,25 +154,44 @@
   <h1>Artikelen &amp; achtergrondverhalen</h1>
   <p class="lede">Praktische inzichten over micropigmentatie, nazorg en het maken van de juiste keuze — geschreven vanuit de praktijk.</p>
 
+  <a class="post" href="blog-wat-kost-een-haar-tattoo.html">
+    <span class="post-thumb"><img src="images/thumb-kosten.webp" alt="Pigmentpuntjes worden punt voor punt op de hoofdhuid gezet" width="440" height="440" loading="lazy" decoding="async"></span>
+    <span class="post-body">
+      <span class="tag">Tarieven</span>
+      <h2>Wat kost een haar tattoo?</h2>
+      <p>Het bedrag meteen, zonder formulier vooraf: waarom er per zone wordt gerekend, wat een volledig traject kost, en waarom de goedkoopste zelden de goedkoopste blijkt.</p>
+      <span class="date">21 november 2026</span>
+    </span>
+  </a>
+
   <a class="post" href="blog-pijn-bij-tattoo-verwijderen.html">
-    <span class="tag">Laser</span>
+    <span class="post-thumb"><img src="images/thumb-pijn.webp" alt="Laserbehandeling voor het verwijderen van een tatoeage" width="440" height="440" loading="lazy" decoding="async"></span>
+    <span class="post-body">
+      <span class="tag">Laser</span>
     <h2>Doet laser tattoo verwijderen pijn?</h2>
     <p>Hoe het echt voelt, waarom het korter duurt dan u denkt, en wat koelen met lucht van circa &minus;40 &deg;C tijdens de behandeling uitmaakt.</p>
     <span class="date">21 november 2026</span>
+    </span>
   </a>
 
   <a class="post" href="blog-nazorg-na-smp.html">
-    <span class="tag">Nazorg</span>
+    <span class="post-thumb"><img src="images/thumb-nazorg.webp" alt="Nazorg na scalp micropigmentatie: zonbescherming aanbrengen op de hoofdhuid" width="440" height="440" loading="lazy" decoding="async"></span>
+    <span class="post-body">
+      <span class="tag">Nazorg</span>
     <h2>Nazorg na scalp micropigmentatie: de eerste 4 weken</h2>
     <p>Wat u kunt verwachten in de eerste weken na een SMP-behandeling, van lichte roodheid tot het definitieve resultaat.</p>
     <span class="date">25 augustus 2026</span>
+    </span>
   </a>
 
   <a class="post" href="blog-smp-vs-haartransplantatie.html">
-    <span class="tag">Vergelijking</span>
+    <span class="post-thumb"><img src="images/thumb-vergelijking.webp" alt="Close-up van hoofdhuid en haargroei" width="440" height="440" loading="lazy" decoding="async"></span>
+    <span class="post-body">
+      <span class="tag">Vergelijking</span>
     <h2>SMP of haartransplantatie? De verschillen op een rij</h2>
     <p>Wat een haartransplantatie wel en niet doet, wat SMP wel en niet doet, en wanneer ze elkaar juist aanvullen.</p>
     <span class="date">20 augustus 2026</span>
+    </span>
   </a>
 </div>
 

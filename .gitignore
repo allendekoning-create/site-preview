@@ -1,0 +1,3 @@
+# Lokale hulpmiddelen, niet voor de live site.
+# launch.json bevat een pad naar Python op deze pc en hoort niet in de repo.
+.claude/

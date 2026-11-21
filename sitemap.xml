@@ -66,6 +66,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://mhpcentrum.nl/blog-wat-kost-een-haar-tattoo.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mhpcentrum.nl/blog-nazorg-na-smp.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
