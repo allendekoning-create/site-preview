@@ -207,6 +207,30 @@
   /* Instagram staat bewust niet bij de knoppen bovenaan: elke uitgang naast
      de CTA kost aanvragen. Hier vangt hij juist af wie nog niet durft te
      appen - die was anders helemaal weg. Vandaar "nog niet zover". */
+  /* Tweede ingang naast WhatsApp. Reden: wie zich schaamt voor dunner
+     wordend haar geeft met een appje meteen naam, foto en nummer weg.
+     Een formulier vraagt minder. Als dit wel binnenkomt en WhatsApp niet,
+     weten we dat de drempel bij het kanaal zat en niet bij de pagina. */
+  .lp-form{margin-top:26px; padding-top:24px; border-top:1px solid var(--line); text-align:left;}
+  .lp-form-kop{font-size:15px; color:var(--stone); margin-bottom:16px; text-align:center;}
+  .lp-form-rij{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px;}
+  .lp-form label{display:block; font-family:var(--label); font-size:10px; letter-spacing:0.12em;
+                 text-transform:uppercase; color:var(--stone-dim); margin-bottom:5px;}
+  .lp-form input, .lp-form textarea{
+    width:100%; padding:11px 13px; font-family:var(--body); font-size:16px; color:var(--cream);
+    background:rgba(255,255,255,0.55); border:1px solid var(--line); border-radius:0;
+  }
+  .lp-form textarea{min-height:88px; resize:vertical;}
+  .lp-form input:focus, .lp-form textarea:focus{outline:2px solid var(--gold); outline-offset:1px;}
+  .lp-form .veld{margin-bottom:12px;}
+  .lp-form .submit-btn{
+    width:100%; margin-top:4px; padding:15px 24px; cursor:pointer;
+    font-family:var(--label); font-size:12px; font-weight:500; letter-spacing:0.09em;
+    text-transform:uppercase; color:var(--ink); background:var(--gold); border:1px solid var(--gold);
+  }
+  .lp-form .submit-btn:hover{background:var(--gold-bright); border-color:var(--gold-bright);}
+  .lp-form .submit-btn:disabled{opacity:0.65; cursor:default;}
+  @media (max-width:560px){ .lp-form-rij{grid-template-columns:1fr;} }
   .nog-niet{margin-top:22px; font-size:15px; color:var(--stone-dim);}
   .nog-niet a{color:var(--gold); text-decoration:none;
               border-bottom:1px solid rgba(201,138,20,0.45); padding-bottom:2px;}
@@ -560,6 +584,21 @@
         <a class="btn btn-line" href="tel:+31621541038">Bel 06 21 54 10 38</a>
       </div>
 
+      <form class="lp-form" id="lpForm">
+        <p class="lp-form-kop">Liever geen WhatsApp? Laat hier uw gegevens achter &mdash; dan nemen wij contact op.</p>
+        <input type="hidden" name="access_key" value="ab093397-b91c-40d7-b4a0-8097e1ec8680">
+        <input type="hidden" name="subject" value="Aanvraag hoofdhuidcamouflage via advertentiepagina">
+        <input type="hidden" name="from_name" value="MHP Centrum advertentiepagina">
+        <div class="lp-form-rij">
+          <div class="veld"><label for="lp_naam">Naam</label><input id="lp_naam" type="text" name="name" required autocomplete="name"></div>
+          <div class="veld"><label for="lp_mail">E-mail</label><input id="lp_mail" type="email" name="email" required autocomplete="email"></div>
+        </div>
+        <div class="veld"><label for="lp_tel">Telefoon <span style="text-transform:none; letter-spacing:0;">(optioneel)</span></label><input id="lp_tel" type="tel" name="phone" autocomplete="tel"></div>
+        <div class="veld"><label for="lp_bericht">Wat stoort u?</label><textarea id="lp_bericht" name="message" required placeholder="Bijvoorbeeld: mijn scheiding wordt breder en mijn hoofdhuid schijnt erdoorheen."></textarea></div>
+        <button class="submit-btn" type="submit">Stuur mijn vraag</button>
+        <p id="lpFormStatus" style="margin-top:13px; font-size:14px; color:var(--stone);"></p>
+      </form>
+
       <p class="nog-niet">Nog niet zover? Kijk dan eerst even mee op <a href="https://www.instagram.com/mhp_centrum/" target="_blank" rel="noopener noreferrer">Instagram</a> &mdash; daar staat nieuw werk zodra het af is, en kunt u rustig zien wat er mogelijk is voordat u iets vraagt.</p>
 
       <div class="gegevens">
@@ -597,6 +636,44 @@
 <!-- mhp.js regelt de cookietoestemming en meldt elke klik op een wa.me- of
      tel:-link als conversie bij Google Ads en Meta. Zonder dit bestand
      meet de advertentie niets. -->
+<script>
+/* Zelfde Web3Forms-afhandeling als de contactformulieren op de homepage,
+   met een eigen conversielabel zodat advertentieleads te onderscheiden
+   zijn van gewone siteaanvragen. */
+(function(){
+  var form = document.getElementById('lpForm');
+  if(!form) return;
+  var status = document.getElementById('lpFormStatus');
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var btn = form.querySelector('.submit-btn');
+    var origineel = btn.textContent;
+    btn.textContent = 'Bezig met verzenden...';
+    btn.disabled = true;
+    status.textContent = '';
+    try{
+      var res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      var result = await res.json();
+      if(result.success){
+        btn.textContent = 'Verzonden ✓';
+        if (window.mhpTrack) window.mhpTrack('lead', { soort: 'advertentieformulier' });
+        status.textContent = 'Bedankt. Wij nemen zo snel mogelijk contact met u op, meestal binnen een dag.';
+        form.reset();
+      } else {
+        btn.textContent = origineel; btn.disabled = false;
+        status.textContent = 'Er ging iets mis bij het verzenden. Probeer het opnieuw, of app of bel ons direct.';
+      }
+    } catch(err){
+      btn.textContent = origineel; btn.disabled = false;
+      status.textContent = 'Er ging iets mis bij het verzenden. Probeer het opnieuw, of app of bel ons direct.';
+    }
+  });
+})();
+</script>
 <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 <script src="/js/mhp.js" defer></script>
 </body>
