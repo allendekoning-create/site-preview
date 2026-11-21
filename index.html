@@ -179,11 +179,29 @@
 
   .mobile-nav{
     position:fixed; inset:0; background:var(--ink); z-index:105;
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px;
+    display:flex; flex-direction:column; align-items:center; gap:24px;
+    /* "safe center" centreert als het past en valt terug op flex-start zodra
+       het menu langer is dan het scherm. Gewoon "center" zou de bovenkant
+       onbereikbaar afknippen. De eerste regel is de terugval voor oudere
+       browsers die het sleutelwoord niet kennen. */
+    justify-content:flex-start;
+    justify-content:safe center;
+    padding:96px 20px 56px;
+    /* Het menu is langer dan een telefoonscherm. Zonder overflow steekt de
+       staart buiten de bak uit: dicht zie je "Blog" bovenaan de pagina staan,
+       open valt hij onder de vouw en is hij niet aan te tikken. */
+    overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain;
     transform:translateY(-100%); transition:transform .45s ease;
   }
   .mobile-nav.open{transform:translateY(0);}
   .mobile-nav a{font-family:var(--serif); font-size:28px; color:var(--cream);}
+  /* Telefoonhoogtes: compacter, zodat het hele menu zonder scrollen in beeld
+     past. Boven 900px (laptop, desktop) blijft de grote letter staan; daar
+     wordt dit menu toch niet getoond. */
+  @media (max-height:900px){
+    .mobile-nav{gap:13px; padding:70px 20px 34px;}
+    .mobile-nav a{font-size:20px;}
+  }
 
   /* ---------- HERO ---------- */
   .hero{
@@ -712,6 +730,12 @@
   nav.desktop-nav .nav-drop-menu a{font-size:11px; letter-spacing:0.1em;}
   .mobile-nav .mnav-sub{display:flex; flex-direction:column; align-items:center; gap:11px; margin-top:-14px;}
   .mobile-nav .mnav-sub a{font-family:var(--label); font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--stone);}
+  /* Hoort bij de regel voor korte schermen hierboven. Staat hier omdat deze
+     twee selectors later in het blad komen en anders zouden winnen. */
+  @media (max-height:900px){
+    .mobile-nav .mnav-sub{gap:8px; margin-top:-10px;}
+    .mobile-nav .mnav-sub a{font-size:11px;}
+  }
 </style>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">

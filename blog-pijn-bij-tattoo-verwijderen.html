@@ -122,6 +122,16 @@
     .nav-drop[data-open="true"] .nav-drop-menu{transform:translateY(0);}
     @media (hover:hover){ .nav-drop:hover .nav-drop-menu{transform:translateY(0);} }
   }
+
+  /* Telefoon: compactere navigatie. Bij 11px wikkelde de balk naar drie regels
+     (147px hoog) terwijl .wrap maar 140px vrijhield, waardoor de vaste header
+     over de broodkruimel heen schoof. */
+  @media (max-width:620px){
+    header{gap:10px; padding:14px 5vw;}
+    .header-links{gap:12px 14px;}
+    .header-links a{font-size:10px; letter-spacing:0.08em;}
+    .wrap{padding-top:116px;}
+  }
 </style>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
